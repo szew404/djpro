@@ -22,7 +22,7 @@ class BaseCommand:
 
         if args.command == "help":
             try:
-                help_module = import_module("commands.help")
+                help_module = import_module("core.commands.help")
                 help_module.help()
             except ModuleNotFoundError:
                 log_with_color(
@@ -34,7 +34,7 @@ class BaseCommand:
             return
 
         try:
-            command_module = import_module(f"commands.{args.command}")
+            command_module = import_module(f"core.commands.{args.command}")
             log_with_color(logging.INFO, "Running commands...", Fore.BLUE, delay=2)
             command_module.run(args)
         except ModuleNotFoundError:
@@ -61,10 +61,14 @@ def main():
         "project",
         "Create a new project.",
         arguments={
+            "project_name": {
+                "help": "Name of your Django project.",
+                "type": str,
+            },
             "--api": {
                 "help": "Include API setup",
                 "action": "store_true",
-            }
+            },
         },
     )
     cli.add_command("help", "Show help for a command.")

@@ -1,4 +1,8 @@
 .DS_Store
 *.pyc
 __pycache__
+*.egg-info
 env
+src
+.env
+requirements.txt

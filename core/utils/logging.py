@@ -17,7 +17,7 @@ logger.addHandler(stream_handler)
 init(autoreset=True)
 
 
-def log_with_color(level, message, color, delay=1):
+def log_with_color(level, message, color, delay=0):
     colored_message = f"{color}{message}{Style.RESET_ALL}"
     logger.log(level, colored_message)
     time.sleep(delay)

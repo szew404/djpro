@@ -6,7 +6,7 @@ setup(
     description="CLI to create Django projects.",
     packages=find_packages(),
     include_package_data=True,
-    install_requires=["django>=5.0"],
+    install_requires=["django>=5.0", "colorama>=0.4.6"],
     entry_points={
         "console_scripts": [
             "dj-pro=core.base:main",
