@@ -92,7 +92,6 @@ def write(base_dir: str, project_name: str, api: bool = False):
 
         # requirements.txt
         with open(os.path.join("requirements.txt"), "a") as f:
-            f.write("\n")
             f.write(requirements_api)
     else:
         with open(os.path.join(base_dir, "config", "settings_base.py"), "w") as f:
