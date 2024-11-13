@@ -1,12 +1,16 @@
-import os
+from pathlib import Path
 
 from ..utils.logging import logging, log_with_color, Fore
 from ..utils.django_utils import generate_secret_key
-
+from ..utils.write_and_config import (
+    create_dirs,
+    create_files,
+    write_to_file,
+    configure_requirements,
+    configure_settings_base,
+)
 from ..utils.files_content import (
     settings_content,
-    settings_api,
-    settings_base_content,
     settings_dev_content,
     settings_prod_content,
     wsgi_content,
@@ -14,7 +18,6 @@ from ..utils.files_content import (
     urls_content,
     env_content,
     requirements_content,
-    requirements_api,
     gitignore_content,
     views_auth_content,
     urls_auth_content,
@@ -22,131 +25,144 @@ from ..utils.files_content import (
 )
 
 
-def create_directories(base_dir: str, api: bool = False):
+def create_project(
+    base_dir: str, project_name: str, api: bool = False, unfold: bool = False
+):
+    """Function to create directories and files"""
+
+    base_dir_path = Path(base_dir)
+
+    # Directories
+    directories = [
+        base_dir_path / "bin",
+        base_dir_path / "config",
+        base_dir_path / "static",
+        base_dir_path / "modules",
+        base_dir_path / "modules" / "authentication",
+        base_dir_path / "utils",
+        base_dir_path / "tests",
+    ]
+
+    # Files
+    project_files = [
+        base_dir_path / "bin" / "__init__.py",
+        base_dir_path / "bin" / "manage.py",
+        base_dir_path / "config" / "__init__.py",
+        base_dir_path / "config" / "settings.py",
+        base_dir_path / "config" / "settings_base.py",
+        base_dir_path / "config" / "settings_prod.py",
+        base_dir_path / "config" / "settings_dev.py",
+        base_dir_path / "config" / "asgi.py",
+        base_dir_path / "config" / "wsgi.py",
+        base_dir_path / "config" / "urls.py",
+        base_dir_path / "config" / ".env",
+        base_dir_path / "modules" / "__init__.py",
+        base_dir_path / "modules" / "authentication" / "__init__.py",
+        base_dir_path / "modules" / "authentication" / "serializers.py",
+        base_dir_path / "modules" / "authentication" / "models.py",
+        base_dir_path / "modules" / "authentication" / "views.py",
+        base_dir_path / "modules" / "authentication" / "urls.py",
+        base_dir_path / "utils" / "__init__.py",
+        base_dir_path / "tests" / "__init__.py",
+    ]
+
+    root_files = [
+        Path(".gitignore"),
+        Path("requirements.txt"),
+    ]
+
+    if api:
+        api_dir = base_dir_path / "modules" / "api"
+        api_files = [
+            base_dir_path / "modules" / "api" / "__init__.py",
+            base_dir_path / "modules" / "api" / "serializers.py",
+            base_dir_path / "modules" / "api" / "models.py",
+            base_dir_path / "modules" / "api" / "views.py",
+            base_dir_path / "modules" / "api" / "urls.py",
+        ]
+        directories.append(api_dir)
+        for file in api_files:
+            project_files.append(file)
+
     log_with_color(logging.INFO, "Creating directories...", Fore.BLUE)
-    os.makedirs(os.path.join(base_dir, "bin"), exist_ok=True)
-    os.makedirs(os.path.join(base_dir, "config"), exist_ok=True)
-    os.makedirs(os.path.join(base_dir, "modules"), exist_ok=True)
-    os.makedirs(os.path.join(base_dir, "modules", "auth"), exist_ok=True)
-    os.makedirs(os.path.join(base_dir, "templates"), exist_ok=True)
-    os.makedirs(os.path.join(base_dir, "static"), exist_ok=True)
-    os.makedirs(os.path.join(base_dir, "utils"), exist_ok=True)
-    os.makedirs(os.path.join(base_dir, "tests"), exist_ok=True)
-
-    if api:
-        os.makedirs(os.path.join(base_dir, "modules", "api"), exist_ok=True)
-
-
-def create_files(base_dir: str, api: bool = False):
-    log_with_color(logging.INFO, "Creating files...", Fore.BLUE)
-    open(os.path.join(base_dir, "bin", "__init__.py"), "w").close()
-    open(os.path.join(base_dir, "bin", "manage.py"), "w").close()
-    open(os.path.join(base_dir, "config", "__init__.py"), "w").close()
-    open(os.path.join(base_dir, "config", "settings_base.py"), "w").close()
-    open(os.path.join(base_dir, "config", "settings_prod.py"), "w").close()
-    open(os.path.join(base_dir, "config", "settings_dev.py"), "w").close()
-    open(os.path.join(base_dir, "config", "asgi.py"), "w").close()
-    open(os.path.join(base_dir, "config", "wsgi.py"), "w").close()
-    open(os.path.join(base_dir, "config", "urls.py"), "w").close()
-    open(os.path.join(base_dir, "modules", "__init__.py"), "w").close()
-    open(os.path.join(base_dir, "modules", "auth", "__init__.py"), "w").close()
-    open(os.path.join(base_dir, "modules", "auth", "views.py"), "w").close()
-    open(os.path.join(base_dir, "modules", "auth", "urls.py"), "w").close()
-    open(os.path.join(base_dir, "utils", "__init__.py"), "w").close()
-    open(os.path.join(base_dir, "tests", "__init__.py"), "w").close()
-
-    if api:
-        open(os.path.join(base_dir, "modules", "api", "__init__.py"), "w").close()
-        open(os.path.join(base_dir, "modules", "api", "serializers.py"), "w").close()
-        open(os.path.join(base_dir, "modules", "api", "models.py"), "w").close()
-        open(os.path.join(base_dir, "modules", "api", "views.py"), "w").close()
-        open(os.path.join(base_dir, "modules", "api", "urls.py"), "w").close()
-
-    open(os.path.join(os.getcwd(), ".gitignore"), "w").close()
-    open(os.path.join(os.getcwd(), "requirements.txt"), "w").close()
-    open(os.path.join(os.getcwd(), ".env"), "w").close()
-
-
-def write(base_dir: str, project_name: str, api: bool = False):
-    """
-    Write the content in each .py file
-
-    Args:
-        base_dir (str): Path to the project dir
-        project_name (str): Project name
-    """
+    create_dirs(directories)  # Create dirs
 
     log_with_color(logging.INFO, "Configuring files...", Fore.YELLOW, delay=3)
-    # requirements.txt
-    with open(os.path.join("requirements.txt"), "w") as f:
-        f.write(requirements_content)
+    create_files(project_files + root_files)  # Create files
+    write(base_dir, project_name, api, unfold)  # Write files
 
-    # settings.py
-    with open(os.path.join(base_dir, "config", "settings.py"), "w") as f:
-        f.write(settings_content.format(project_name=project_name))
 
-    if api:
-        # settings_base.py
-        with open(os.path.join(base_dir, "config", "settings_base.py"), "w") as f:
-            f.write(settings_api)
+def write(
+    base_dir: str,
+    project_name: str,
+    api: bool = False,
+    unfold: bool = False,
+):
+    """Function to write the content in each file of the project."""
+    log_with_color(logging.INFO, "Configuring files...", Fore.YELLOW, delay=3)
 
-        # requirements.txt
-        with open(os.path.join("requirements.txt"), "a") as f:
-            f.write(requirements_api)
-    else:
-        with open(os.path.join(base_dir, "config", "settings_base.py"), "w") as f:
-            f.write(settings_base_content)
+    base_dir_path = Path(base_dir)
+    config_dir = base_dir_path / "config"
+    bin_dir = base_dir_path / "bin"
+    auth_module_dir = base_dir_path / "modules" / "authentication"
 
-    # settings_dev.py
-    with open(os.path.join(base_dir, "config", "settings_dev.py"), "w") as f:
-        f.write(settings_dev_content)
+    files_to_write = [
+        (Path("requirements.txt"), requirements_content),
+        (
+            config_dir / "settings.py",
+            settings_content.format(project_name=project_name),
+        ),
+        (config_dir / "settings_dev.py", settings_dev_content),
+        (config_dir / "settings_prod.py", settings_prod_content),
+        (config_dir / "wsgi.py", wsgi_content.format(project_name=project_name)),
+        (config_dir / "asgi.py", asgi_content.format(project_name=project_name)),
+        (config_dir / "urls.py", urls_content.format(project_name=project_name)),
+        (bin_dir / "manage.py", manage_content),
+        (auth_module_dir / "views.py", views_auth_content),
+        (auth_module_dir / "urls.py", urls_auth_content),
+        (config_dir / ".env", env_content.format(secret_key=generate_secret_key())),
+        (Path(".gitignore"), gitignore_content),
+    ]
 
-    # settings_prod.py
-    with open(os.path.join(base_dir, "config", "settings_prod.py"), "w") as f:
-        f.write(settings_prod_content)
+    for file_path, content in files_to_write:
+        write_to_file(file_path, content)
 
-    # wsgi.py
-    with open(os.path.join(base_dir, "config", "wsgi.py"), "w") as f:
-        f.write(wsgi_content.format(project_name=project_name))
+    # settings_base.py
+    settings_base_content = configure_settings_base(api, unfold)
+    write_to_file(config_dir / "settings_base.py", settings_base_content)
 
-    # asgi.py
-    with open(os.path.join(base_dir, "config", "asgi.py"), "w") as f:
-        f.write(asgi_content.format(project_name=project_name))
-
-    # urls.py
-    with open(os.path.join(base_dir, "config", "urls.py"), "w") as f:
-        f.write(urls_content.format(project_name=project_name))
-
-    # bin/manage.py
-    with open(os.path.join(base_dir, "bin", "manage.py"), "w") as f:
-        f.write(manage_content)
-
-    # auth/views.py
-    with open(os.path.join(base_dir, "modules", "auth", "views.py"), "w") as f:
-        f.write(views_auth_content)
-
-    # auth/urls.py
-    with open(os.path.join(base_dir, "modules", "auth", "urls.py"), "w") as f:
-        f.write(urls_auth_content)
-
-    # env
-    with open(os.path.join(".env"), "w") as f:
-        f.write(env_content.format(secret_key=generate_secret_key()))
-
-    # gitignore
-    with open(os.path.join(".gitignore"), "w") as f:
-        f.write(gitignore_content)
+    # sub-commands requirements.txt
+    additional_requirements = configure_requirements(api, unfold)
+    if additional_requirements:
+        write_to_file(Path("requirements.txt"), additional_requirements, mode="a")
 
 
 def run(args):
     """Entry point for command 'project'."""
-    create_directories(args.base_dir, api=args.api)
-    log_with_color(logging.INFO, "---- Directories created successfully.", Fore.GREEN)
-    create_files(args.base_dir, api=args.api)
-    write(args.base_dir, args.project_name, api=args.api)
-    log_with_color(logging.INFO, "---- Files created successfully.", Fore.GREEN)
-    log_with_color(
-        logging.INFO,
-        "\nRun your Django project using: python bin/manage.py runserver",
-        Fore.WHITE,
-    )
+
+    try:
+        create_project(
+            base_dir=args.base_dir,
+            project_name=args.project_name,
+            api=args.api,
+            unfold=args.unfold,
+        )
+        log_with_color(logging.INFO, "---- Project created successfully.", Fore.GREEN)
+        log_with_color(
+            logging.INFO,
+            "\nRemember to install requirements: pip install -r requirements.txt",
+            Fore.YELLOW,
+        )
+
+        log_with_color(
+            logging.INFO,
+            "\nRun your Django project inside the folder 'src' using: python bin/manage.py runserver",
+            Fore.WHITE,
+        )
+
+    except Exception as e:
+        log_with_color(
+            logging.INFO,
+            f"\nError while creating project: {e}",
+            Fore.RED,
+        )

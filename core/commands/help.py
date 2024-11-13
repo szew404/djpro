@@ -4,7 +4,7 @@ from ..utils.logging import logging, log_with_color, Fore
 def help():
     log_with_color(
         logging.INFO,
-        "\nType 'dj-pro help <subcommand>' for help on a specific subcommand.",
+        "\nCommand help guide:",
         Fore.WHITE,
         delay=1,
     )
@@ -23,13 +23,7 @@ def help():
 
     log_with_color(
         logging.INFO,
-        "\n[dj-pro]",
-        Fore.BLUE,
-    )
-
-    log_with_color(
-        logging.INFO,
-        "  project          Create a Django project with a scalable and modular architecture.",
+        "\n  project          Creates a Django project with a scalable and modular architecture.",
         Fore.YELLOW,
         delay=0.5,
     )
@@ -49,13 +43,20 @@ def help():
     )
     log_with_color(
         logging.INFO,
-        "    --docker       Add Docker configuration.",
+        "    --docker       Adds Docker configuration.",
         Fore.BLUE,
         delay=0.2,
     )
     log_with_color(
         logging.INFO,
-        "    --unfold       Add Django Admin Site customization.",
+        "    --unfold       Adds Django Admin Site customization.",
         Fore.BLUE,
         delay=0.2,
+    )
+
+    log_with_color(
+        logging.INFO,
+        "\n  help          Displays the command help guide.",
+        Fore.YELLOW,
+        delay=0.5,
     )

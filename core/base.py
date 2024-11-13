@@ -37,14 +37,16 @@ class BaseCommand:
             command_module = import_module(f"core.commands.{args.command}")
             log_with_color(logging.INFO, "Running commands...", Fore.BLUE, delay=2)
             command_module.run(args)
+
         except ModuleNotFoundError:
             log_with_color(
                 logging.INFO,
-                f"\nCommand {args.command} not found.",
+                "\nCommand not found.",
                 Fore.YELLOW,
                 delay=1,
             )
-            self.parser.print_help()
+            help_module = import_module("core.commands.help")
+            help_module.help()
 
     def add_command(self, name, help_message, arguments=None):
         """Register a new subcommand"""
@@ -62,14 +64,21 @@ def main():
         "Create a new project.",
         arguments={
             "project_name": {
-                "help": "Name of your Django project.",
+                "help": "Create a Django project with a scalable and modular architecture.",
                 "type": str,
             },
             "--api": {
                 "help": "Include API setup",
                 "action": "store_true",
             },
+            "--unfold": {
+                "help": "Include Unfold Admin Theme",
+                "action": "store_true",
+            },
         },
     )
-    cli.add_command("help", "Show help for a command.")
+    cli.add_command(
+        "help",
+        "Show help for a command.",
+    )
     cli.execute()
