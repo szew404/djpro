@@ -1,4 +1,5 @@
 from pathlib import Path
+from ..utils.logging import logging, log_with_color, Fore
 
 from .files_content import (
     settings_api,
@@ -42,10 +43,26 @@ def configure_requirements(api: bool, unfold: bool) -> str:
 
 def configure_settings_base(api: bool, unfold: bool) -> str:
     """Config settings content"""
+
     if api and unfold:
+        log_with_color(
+            logging.INFO,
+            "\nConfiguring Unfold...",
+            Fore.WHITE,
+            delay=3,
+        )
         return settings_api_unfold
+
     if api:
         return settings_api
+
     if unfold:
+        log_with_color(
+            logging.INFO,
+            "\nConfiguring Unfold...",
+            Fore.WHITE,
+            delay=2,
+        )
         return settings_unfold
+
     return settings_base_content  # Default

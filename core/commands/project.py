@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from ..utils.logging import logging, log_with_color, Fore
+from ..utils.messages import run_dev, run_prod
 from ..utils.django_utils import generate_secret_key
 from ..utils.write_and_config import (
     create_dirs,
@@ -16,17 +17,25 @@ from ..utils.files_content import (
     wsgi_content,
     asgi_content,
     urls_content,
-    env_content,
+    env_dev_content,
     requirements_content,
     gitignore_content,
     views_auth_content,
     urls_auth_content,
     manage_content,
+    dockerfile_content,
+    dockercompose_content,
+    env_prod_content,
+    env_prod_db_content,
 )
 
 
 def create_project(
-    base_dir: str, project_name: str, api: bool = False, unfold: bool = False
+    base_dir: Path,
+    project_name: str,
+    api: bool = False,
+    docker: bool = False,
+    unfold: bool = False,
 ):
     """Function to create directories and files"""
 
@@ -55,7 +64,7 @@ def create_project(
         base_dir_path / "config" / "asgi.py",
         base_dir_path / "config" / "wsgi.py",
         base_dir_path / "config" / "urls.py",
-        base_dir_path / "config" / ".env",
+        base_dir_path / "config" / ".env.conf",
         base_dir_path / "modules" / "__init__.py",
         base_dir_path / "modules" / "authentication" / "__init__.py",
         base_dir_path / "modules" / "authentication" / "serializers.py",
@@ -67,12 +76,38 @@ def create_project(
     ]
 
     root_files = [
+        Path(".env.dev"),
         Path(".gitignore"),
         Path("requirements.txt"),
     ]
 
+    if docker:
+        log_with_color(
+            logging.INFO,
+            "\nConfiguring Docker...",
+            Fore.WHITE,
+            delay=2,
+        )
+        docker_files = [
+            Path(".env.prod"),
+            Path(".env.prod.db"),
+            Path("Dockerfile"),
+            Path("docker-compose.yml"),
+        ]
+        for file in docker_files:
+            root_files.append(file)
+
     if api:
+        log_with_color(
+            logging.INFO,
+            "\nConfiguring Django Rest Framework...",
+            Fore.WHITE,
+            delay=1,
+        )
+
         api_dir = base_dir_path / "modules" / "api"
+        directories.append(api_dir)
+
         api_files = [
             base_dir_path / "modules" / "api" / "__init__.py",
             base_dir_path / "modules" / "api" / "serializers.py",
@@ -80,22 +115,22 @@ def create_project(
             base_dir_path / "modules" / "api" / "views.py",
             base_dir_path / "modules" / "api" / "urls.py",
         ]
-        directories.append(api_dir)
         for file in api_files:
             project_files.append(file)
 
     log_with_color(logging.INFO, "Creating directories...", Fore.BLUE)
     create_dirs(directories)  # Create dirs
 
-    log_with_color(logging.INFO, "Configuring files...", Fore.YELLOW, delay=3)
+    log_with_color(logging.INFO, "Almost ready...", Fore.YELLOW, delay=3)
     create_files(project_files + root_files)  # Create files
-    write(base_dir, project_name, api, unfold)  # Write files
+    write(base_dir, project_name, api, docker, unfold)  # Write files
 
 
 def write(
-    base_dir: str,
+    base_dir: Path,
     project_name: str,
     api: bool = False,
+    docker: bool = False,
     unfold: bool = False,
 ):
     """Function to write the content in each file of the project."""
@@ -107,7 +142,10 @@ def write(
     auth_module_dir = base_dir_path / "modules" / "authentication"
 
     files_to_write = [
-        (Path("requirements.txt"), requirements_content),
+        (
+            config_dir / ".env.conf",
+            "DJANGO_ENV=dev",
+        ),  # Development environment by default
         (
             config_dir / "settings.py",
             settings_content.format(project_name=project_name),
@@ -120,9 +158,29 @@ def write(
         (bin_dir / "manage.py", manage_content),
         (auth_module_dir / "views.py", views_auth_content),
         (auth_module_dir / "urls.py", urls_auth_content),
-        (config_dir / ".env", env_content.format(secret_key=generate_secret_key())),
+        (Path("requirements.txt"), requirements_content),
         (Path(".gitignore"), gitignore_content),
+        (Path(".env.dev"), env_dev_content.format(secret_key=generate_secret_key())),
     ]
+
+    if docker:
+        # Set production environment
+        files_to_write[0] = (
+            config_dir / ".env.conf",
+            "DJANGO_ENV=prod",
+        )
+
+        docker_files = [
+            (
+                Path(".env.prod"),
+                env_prod_content.format(secret_key=generate_secret_key()),
+            ),
+            (Path(".env.prod.db"), env_prod_db_content),
+            (Path("Dockerfile"), dockerfile_content),
+            (Path("docker-compose.yml"), dockercompose_content),
+        ]
+        for file in docker_files:
+            files_to_write.append(file)
 
     for file_path, content in files_to_write:
         write_to_file(file_path, content)
@@ -145,20 +203,23 @@ def run(args):
             base_dir=args.base_dir,
             project_name=args.project_name,
             api=args.api,
+            docker=args.docker,
             unfold=args.unfold,
         )
+
         log_with_color(logging.INFO, "---- Project created successfully.", Fore.GREEN)
-        log_with_color(
-            logging.INFO,
-            "\nRemember to install requirements: pip install -r requirements.txt",
-            Fore.YELLOW,
-        )
 
         log_with_color(
             logging.INFO,
-            "\nRun your Django project inside the folder 'src' using: python bin/manage.py runserver",
-            Fore.WHITE,
+            "\nIMPORTANT:\n",
+            Fore.YELLOW,
         )
+
+        # Messages
+        if args.docker:
+            run_prod.run_prod_messages()
+        else:
+            run_dev.run_dev_messages()
 
     except Exception as e:
         log_with_color(

@@ -68,11 +68,15 @@ def main():
                 "type": str,
             },
             "--api": {
-                "help": "Include API setup",
+                "help": "Include API configuration",
+                "action": "store_true",
+            },
+            "--docker": {
+                "help": "Include Docker configuration for easy deployment",
                 "action": "store_true",
             },
             "--unfold": {
-                "help": "Include Unfold Admin Theme",
+                "help": "Include Unfold custom theme to Django admin site",
                 "action": "store_true",
             },
         },

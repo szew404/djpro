@@ -18,19 +18,11 @@ else:
     from .settings_dev import *
 """
 
-settings_base_content = """
+settings_base_content = """# Base settings
 import os
 from pathlib import Path
-import environ
-
-env = environ.Env(
-    ALLOWED_HOSTS=(str, ""),
-)
-environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = env("SECRET_KEY")
 
 # Application definition
 
@@ -78,413 +70,9 @@ TEMPLATES = [
 ROOT_URLCONF = "config.urls"
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "static"
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
-
-STATICFILES_DIRS = (BASE_DIR / "static",)
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
-LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
-USE_I18N = True
-
-USE_TZ = True
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-"""
-
-settings_api = """
-import os
-from pathlib import Path
-import environ
-
-env = environ.Env(
-    ALLOWED_HOSTS=(str, ""),
-)
-environ.Env.read_env()
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = env("SECRET_KEY")
-
-# Application definition
-
-INSTALLED_APPS = [
-    # Django default
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-
-    # Internal
-    "modules.api",
-    "modules.authentication",
-
-    # External
-    "rest_framework",
-    "drf_spectacular",
-]
-
-# Docs config
-REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-}
-
-SPECTACULAR_SETTINGS = {
-    "TITLE": "MyAPI",
-    "DESCRIPTION": "MyAPI Documentation",
-    "VERSION": "1.0.0",
-    "SERVE_INCLUDE_SCHEMA": False,
-}
-
-MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
-
-WSGI_APPLICATION = "config.wsgi.application"
-
-TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
-    },
-]
-
-ROOT_URLCONF = "config.urls"
-
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
-
-STATICFILES_DIRS = (BASE_DIR / "static",)
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
-LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
-USE_I18N = True
-
-USE_TZ = True
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-"""
-
-settings_unfold = """
-import os
-from pathlib import Path
-import environ
-
-from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
-
-env = environ.Env(
-    ALLOWED_HOSTS=(str, ""),
-)
-environ.Env.read_env()
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = env("SECRET_KEY")
-
-# Application definition
-
-INSTALLED_APPS = [
-    # External Django admin theme
-    "unfold",
-    # Django default
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-
-    # Internal
-    "modules.authentication",
-]
-
-# Admin Unfold theme config
-UNFOLD = {
-    "SITE_TITLE": "Django Admin Site",
-    "SITE_HEADER": "Django Admin Site",
-    "SITE_URL": "https://github.com/szew404/dj-pro",
-    # "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
-    "SITE_ICON": {
-        "light": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # light mode
-        "dark": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # dark mode
-    },
-    # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
-    "SITE_LOGO": {
-        "light": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # light mode
-        "dark": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # dark mode
-    },
-    "SITE_SYMBOL": "speed",  # symbol from icon set
-    "SITE_FAVICONS": [
-        {
-            "rel": "icon",
-            "sizes": "32x32",
-            "type": "image/png",
-            "href": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",
-        },
-    ],
-    "SHOW_HISTORY": False,  # show/hide "History" button, default: True
-    "SHOW_VIEW_ON_SITE": False,  # show/hide "View on site" button, default: True
-    "SIDEBAR": {
-        "show_search": True,  # Search in applications and models names
-        "navigation": [
-            {
-                "title": _("Navigation"),
-                "separator": True,  # Top border
-                "collapsible": False,  # Collapsible group of links
-                "items": [
-                    {
-                        "title": _("Users"),
-                        "icon": "people", # Supported icon set: https://fonts.google.com/icons
-                        "link": "/dashboard/auth/user/",
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                    {
-                        "title": _("Groups"),
-                        "icon": "group",
-                        "link": "/dashboard/auth/group/",
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                    {
-                        "title": _("Home"),
-                        "icon": "dashboard",
-                        "link": reverse_lazy("admin:index"),
-                    },
-                ],
-            },
-        ],
-    },
-}
-
-MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
-
-WSGI_APPLICATION = "config.wsgi.application"
-
-TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
-    },
-]
-
-ROOT_URLCONF = "config.urls"
-
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
-
-STATICFILES_DIRS = (BASE_DIR / "static",)
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
-LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
-USE_I18N = True
-
-USE_TZ = True
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-"""
-
-settings_api_unfold = """
-import os
-from pathlib import Path
-import environ
-
-from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
-
-env = environ.Env(
-    ALLOWED_HOSTS=(str, ""),
-)
-environ.Env.read_env()
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = env("SECRET_KEY")
-
-# Application definition
-
-INSTALLED_APPS = [
-    # External Django admin theme
-    "unfold",
-    # Django default
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-
-    # Internal
-    "modules.api",
-    "modules.authentication",
-
-    # External
-    "rest_framework",
-    "drf_spectacular",
-]
-
-# Docs config
-REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-}
-
-SPECTACULAR_SETTINGS = {
-    "TITLE": "MyAPI",
-    "DESCRIPTION": "MyAPI Documentation",
-    "VERSION": "1.0.0",
-    "SERVE_INCLUDE_SCHEMA": False,
-}
-
-# Admin Unfold theme config
-UNFOLD = {
-    "SITE_TITLE": "Django Admin Site",
-    "SITE_HEADER": "Django Admin Site",
-    "SITE_URL": "https://github.com/szew404/dj-pro",
-    # "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
-    "SITE_ICON": {
-        "light": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # light mode
-        "dark": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # dark mode
-    },
-    # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
-    "SITE_LOGO": {
-        "light": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # light mode
-        "dark": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # dark mode
-    },
-    "SITE_SYMBOL": "speed",  # symbol from icon set
-    "SITE_FAVICONS": [
-        {
-            "rel": "icon",
-            "sizes": "32x32",
-            "type": "image/png",
-            "href": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",
-        },
-    ],
-    "SHOW_HISTORY": False,  # show/hide "History" button, default: True
-    "SHOW_VIEW_ON_SITE": False,  # show/hide "View on site" button, default: True
-    "SIDEBAR": {
-        "show_search": True,  # Search in applications and models names
-        "navigation": [
-            {
-                "title": _("Navigation"),
-                "separator": True,  # Top border
-                "collapsible": False,  # Collapsible group of links
-                "items": [
-                    {
-                        "title": _("Users"),
-                        "icon": "people", # Supported icon set: https://fonts.google.com/icons
-                        "link": "/dashboard/auth/user/",
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                    {
-                        "title": _("Groups"),
-                        "icon": "group",
-                        "link": "/dashboard/auth/group/",
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                    {
-                        "title": _("Home"),
-                        "icon": "dashboard",
-                        "link": reverse_lazy("admin:index"),
-                    },
-                ],
-            },
-        ],
-    },
-}
-
-MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
-
-WSGI_APPLICATION = "config.wsgi.application"
-
-TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
-    },
-]
-
-ROOT_URLCONF = "config.urls"
-
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
+MEDIA_ROOT = BASE_DIR / "media"
 
 STATICFILES_DIRS = (BASE_DIR / "static",)
 
@@ -505,10 +93,34 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 """
 
 settings_dev_content = """# Development settings
-from .settings_base import *
+import os
+from pathlib import Path
+import environ
+
+env = environ.Env(
+    # default value
+
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(str, ""),
+
+    SQL_ENGINE=(str, "django.db.backends.sqlite3"),
+    SQL_DATABASE=(str, "db.sqlite3"),
+    SQL_USER=(str, "user"),
+    SQL_PASSWORD=(str, "password"),
+    SQL_HOST=(str, "localhost"),
+    SQL_PORT=(str, "5432"),
+)
+
+ENV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+environ.Env.read_env(os.path.join(ENV_PATH, ".env.dev"))
+
+SECRET_KEY = env("SECRET_KEY")
 
 # Debug mode
-DEBUG = True
+DEBUG = env('DEBUG')
+
+from .settings_base import *
 
 # Allowed hosts
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
@@ -519,17 +131,45 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # Database configuration
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": env("SQL_ENGINE"),
+        "NAME": env("SQL_DATABASE"),
+        "USER": env("SQL_USER"),
+        "PASSWORD": env("SQL_PASSWORD"),
+        "HOST": env("SQL_HOST"),
+        "PORT": env("SQL_PORT"),
     }
 }
 """
 
 settings_prod_content = """# Production settings
-from .settings_base import *
+import os
+from pathlib import Path
+import environ
+
+env = environ.Env(
+    # default value
+
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(str, ""),
+    
+    SQL_ENGINE=(str, "django.db.backends.sqlite3"),
+    SQL_DATABASE=(str, "db.sqlite3"),
+    SQL_USER=(str, "user"),
+    SQL_PASSWORD=(str, "password"),
+    SQL_HOST=(str, "localhost"),
+    SQL_PORT=(str, "5432"),
+)
+
+ENV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+
+environ.Env.read_env(os.path.join(ENV_PATH, ".env.prod"))
+
+SECRET_KEY = env("SECRET_KEY")
 
 # Debug mode
-DEBUG = False
+DEBUG = env('DEBUG')
+
+from .settings_base import *
 
 # Allowed hosts
 ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
@@ -542,15 +182,14 @@ EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
-# Database configuration (PostgreSQL)
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("POSTGRES_DB"),
-        "USER": env("POSTGRES_USER"),
-        "PASSWORD": env("POSTGRES_PASSWORD"),
-        "HOST": env("POSTGRES_HOST"),
-        "PORT": env("POSTGRES_PORT"),
+        "ENGINE": env("SQL_ENGINE"),
+        "NAME": env("SQL_DATABASE"),
+        "USER": env("SQL_USER"),
+        "PASSWORD": env("SQL_PASSWORD"),
+        "HOST": env("SQL_HOST"),
+        "PORT": env("SQL_PORT"),
     }
 }
 
@@ -561,6 +200,386 @@ SECURE_HSTS_PRELOAD = True
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+"""
+
+settings_api = """ # API settings
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Application definition
+
+INSTALLED_APPS = [
+    # Django default
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+
+    # Internal
+    "modules.api",
+    "modules.authentication",
+
+    # External
+    "rest_framework",
+    "drf_spectacular",
+]
+
+# Docs config
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "MyAPI",
+    "DESCRIPTION": "MyAPI Documentation",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+WSGI_APPLICATION = "config.wsgi.application"
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
+
+ROOT_URLCONF = "config.urls"
+
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "static"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+STATICFILES_DIRS = (BASE_DIR / "static",)
+
+# Internationalization
+# https://docs.djangoproject.com/en/5.1/topics/i18n/
+
+LANGUAGE_CODE = "en-us"
+
+TIME_ZONE = "UTC"
+
+USE_I18N = True
+
+USE_TZ = True
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+"""
+
+settings_unfold = """ # Unfold settings
+import os
+from pathlib import Path
+
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Application definition
+
+INSTALLED_APPS = [
+    # External Django admin theme
+    "unfold",
+    # Django default
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+
+    # Internal
+    "modules.authentication",
+]
+
+# Admin Unfold theme config
+UNFOLD = {
+    "SITE_TITLE": "Django Admin Site",
+    "SITE_HEADER": "Django Admin Site",
+    "SITE_URL": "https://github.com/szew404/dj-pro",
+    # "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
+    "SITE_ICON": {
+        "light": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # light mode
+        "dark": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # dark mode
+    },
+    # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
+    "SITE_LOGO": {
+        "light": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # light mode
+        "dark": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # dark mode
+    },
+    "SITE_SYMBOL": "speed",  # symbol from icon set
+    "SITE_FAVICONS": [
+        {
+            "rel": "icon",
+            "sizes": "32x32",
+            "type": "image/png",
+            "href": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",
+        },
+    ],
+    "SHOW_HISTORY": False,  # show/hide "History" button, default: True
+    "SHOW_VIEW_ON_SITE": False,  # show/hide "View on site" button, default: True
+    "SIDEBAR": {
+        "show_search": True,  # Search in applications and models names
+        "navigation": [
+            {
+                "title": _("Navigation"),
+                "separator": True,  # Top border
+                "collapsible": False,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Users"),
+                        "icon": "people", # Supported icon set: https://fonts.google.com/icons
+                        "link": "/dashboard/auth/user/",
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Groups"),
+                        "icon": "group",
+                        "link": "/dashboard/auth/group/",
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Home"),
+                        "icon": "dashboard",
+                        "link": reverse_lazy("admin:index"),
+                    },
+                ],
+            },
+        ],
+    },
+}
+
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+WSGI_APPLICATION = "config.wsgi.application"
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
+
+ROOT_URLCONF = "config.urls"
+
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "static"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+STATICFILES_DIRS = (BASE_DIR / "static",)
+
+# Internationalization
+# https://docs.djangoproject.com/en/5.1/topics/i18n/
+
+LANGUAGE_CODE = "en-us"
+
+TIME_ZONE = "UTC"
+
+USE_I18N = True
+
+USE_TZ = True
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+"""
+
+settings_api_unfold = """ # API + Unfold settings
+import os
+from pathlib import Path
+
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Application definition
+
+INSTALLED_APPS = [
+    # External Django admin theme
+    "unfold",
+    # Django default
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+
+    # Internal
+    "modules.api",
+    "modules.authentication",
+
+    # External
+    "rest_framework",
+    "drf_spectacular",
+]
+
+# Docs config
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "MyAPI",
+    "DESCRIPTION": "MyAPI Documentation",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
+# Admin Unfold theme config
+UNFOLD = {
+    "SITE_TITLE": "Django Admin Site",
+    "SITE_HEADER": "Django Admin Site",
+    "SITE_URL": "https://github.com/szew404/dj-pro",
+    # "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
+    "SITE_ICON": {
+        "light": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # light mode
+        "dark": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # dark mode
+    },
+    # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
+    "SITE_LOGO": {
+        "light": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # light mode
+        "dark": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",  # dark mode
+    },
+    "SITE_SYMBOL": "speed",  # symbol from icon set
+    "SITE_FAVICONS": [
+        {
+            "rel": "icon",
+            "sizes": "32x32",
+            "type": "image/png",
+            "href": lambda request: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=ads_click",
+        },
+    ],
+    "SHOW_HISTORY": False,  # show/hide "History" button, default: True
+    "SHOW_VIEW_ON_SITE": False,  # show/hide "View on site" button, default: True
+    "SIDEBAR": {
+        "show_search": True,  # Search in applications and models names
+        "navigation": [
+            {
+                "title": _("Navigation"),
+                "separator": True,  # Top border
+                "collapsible": False,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Users"),
+                        "icon": "people", # Supported icon set: https://fonts.google.com/icons
+                        "link": "/dashboard/auth/user/",
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Groups"),
+                        "icon": "group",
+                        "link": "/dashboard/auth/group/",
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Home"),
+                        "icon": "dashboard",
+                        "link": reverse_lazy("admin:index"),
+                    },
+                ],
+            },
+        ],
+    },
+}
+
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+WSGI_APPLICATION = "config.wsgi.application"
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
+
+ROOT_URLCONF = "config.urls"
+
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "static"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+STATICFILES_DIRS = (BASE_DIR / "static",)
+
+# Internationalization
+# https://docs.djangoproject.com/en/5.1/topics/i18n/
+
+LANGUAGE_CODE = "en-us"
+
+TIME_ZONE = "UTC"
+
+USE_I18N = True
+
+USE_TZ = True
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 """
 
 wsgi_content = """# WSGI config for {project_name} project.
@@ -669,20 +688,69 @@ drf-spectacular>=0.27.2
 requirements_unfold = """django-unfold>=0.41.0
 """
 
-env_content = """DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
-SECRET_KEY='{secret_key}'
-DJANGO_ENV=dev # Development environment. Change to prod if you want to change to production environment.
+env_dev_content = """SECRET_KEY='{secret_key}'
+"""
+
+env_prod_content = """SECRET_KEY='{secret_key}'
+DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
 
 EMAIL_HOST=smtp.example.com
 EMAIL_PORT=587
 EMAIL_HOST_USER=your-email@example.com
 EMAIL_HOST_PASSWORD=your-email-password
 
-POSTGRES_DB=your-db-name
+SQL_ENGINE=django.db.backends.postgresql
+SQL_DATABASE=dj-pro_prod
+SQL_USER=dj-pro-user
+SQL_PASSWORD=dj-pro
+SQL_HOST=db
+SQL_PORT=5432
+DATABASE=postgres
+"""
+
+env_prod_db_content = """POSTGRES_DB=your-db-name
 POSTGRES_USER=your-db-user
 POSTGRES_PASSWORD=your-db-password
-POSTGRES_HOST=your-db-host
-POSTGRES_PORT=5433 # By default
+"""
+
+dockerfile_content = """FROM python:3.12-slim-bookworm
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 8000
+"""
+
+dockercompose_content = """services:
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env.prod.db
+
+  web:
+    build: .
+    command: python src/bin/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    env_file:
+      - .env.prod
+    expose:
+      - "8000"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+
 """
 
 gitignore_content = """# Created by https://www.toptal.com/developers/gitignore/api/django,python

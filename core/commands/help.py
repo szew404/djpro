@@ -43,13 +43,13 @@ def help():
     )
     log_with_color(
         logging.INFO,
-        "    --docker       Adds Docker configuration.",
+        "    --docker       Adds Docker configuration for easy deployment.",
         Fore.BLUE,
         delay=0.2,
     )
     log_with_color(
         logging.INFO,
-        "    --unfold       Adds Django Admin Site customization.",
+        "    --unfold       Adds Unfold custom theme to Django admin site.",
         Fore.BLUE,
         delay=0.2,
     )
