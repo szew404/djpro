@@ -629,7 +629,35 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls), # Django Admin Site
 
-    # Example of application url
+    # Including a new module
+    path("auth/", include("modules.authentication.urls")),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+"""
+
+urls_api_content = """# URL configuration for {project_name} project.
+
+# For more information please see:
+# https://docs.djangoproject.com/en/5.0/topics/http/urls/
+
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import path, include
+
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
+urlpatterns = [
+    path("admin/", admin.site.urls), # Django Admin Site
+
+    # YOUR PATTERNS
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+
+    # Optional UI:
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+
+    # Including a new module
     path("auth/", include("modules.authentication.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -27,6 +27,7 @@ from ..utils.files_content import (
     dockercompose_content,
     env_prod_content,
     env_prod_db_content,
+    urls_api_content,
 )
 
 
@@ -50,6 +51,7 @@ def create_project(
         base_dir_path / "modules" / "authentication",
         base_dir_path / "utils",
         base_dir_path / "tests",
+        base_dir_path / "templates",
     ]
 
     # Files
@@ -162,6 +164,12 @@ def write(
         (Path(".gitignore"), gitignore_content),
         (Path(".env.dev"), env_dev_content.format(secret_key=generate_secret_key())),
     ]
+
+    if api:
+        files_to_write[6] = (
+            config_dir / "urls.py",
+            urls_api_content.format(project_name=project_name),
+        )
 
     if docker:
         # Set production environment
