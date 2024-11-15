@@ -15,10 +15,9 @@ DjangoAdminSite custom theme and Docker to optimize your development time.
 The idea of this package is to facilitate the creation of a Django project with a
 modular and scalable architecture, facilitating and optimizing the development time.
 Through CLI commands, you will be able to include configuration options such as:
-Include ``Django Rest Framework`` configuration for further API development.
-Include ``Unfold`` setup and configuration for a customization of the Django Admin
-Site theme.
-Include ``Docker`` configuration from an early stage of development to facilitate
+``Django Rest Framework`` configuration for further API development. ``Unfold`` setup
+and configuration for a customization of the Django Admin Site theme.
+``Docker`` configuration from an early stage of development to facilitate
 future deployment.
 
 Using ``dj-pro`` you can stop creating the directories of your Django project
