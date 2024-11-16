@@ -20,7 +20,7 @@ The recommended installation method is `pip`_-installing into a
 
 .. note::
 
-   After installing dj-pro, no need to add it to ``INSTALLED_APPS``.
+   dj-pro will install ``Django 5.1 version`` if is not installed yet.
 
 
 .. _hosted_on_pypi: #
