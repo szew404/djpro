@@ -1,5 +1,5 @@
-core package
-============
+djpro package
+=============
 
 Subpackages
 -----------
@@ -7,17 +7,16 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   core.commands
-   core.utils
-   core.utils.messages
+   djpro.commands
+   djpro.utils
 
 Submodules
 ----------
 
-core.base module
-----------------
+djpro.base module
+-----------------
 
-.. automodule:: core.base
+.. automodule:: djpro.base
    :members:
    :undoc-members:
    :show-inheritance:
@@ -25,7 +24,7 @@ core.base module
 Module contents
 ---------------
 
-.. automodule:: core
+.. automodule:: djpro
    :members:
    :undoc-members:
    :show-inheritance:

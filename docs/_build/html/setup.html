@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="License and Credits" href="license.html" /><link rel="prev" title="core.utils.messages package" href="core.utils.messages.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="License and Credits" href="license.html" /><link rel="prev" title="djpro.utils.messages package" href="djpro.utils.messages.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
         <title>setup module - dj-pro 0.0.1 documentation</title>
@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -205,10 +205,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">dj-pro</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of dj-pro</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="core.html">core package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of core package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="core.commands.html">core.commands package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="core.utils.html">core.utils package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="core.utils.messages.html">core.utils.messages package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="djpro.html">djpro package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of djpro package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="djpro.commands.html">djpro.commands package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="djpro.utils.html">djpro.utils package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of djpro.utils package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="djpro.utils.messages.html">djpro.utils.messages package</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">setup module</a></li>
@@ -249,7 +251,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -257,6 +259,30 @@
         <article role="main" id="furo-main-content">
           <section id="module-setup">
 <span id="setup-module"></span><h1>setup module<a class="headerlink" href="#module-setup" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="setup.find_meta">
+<span class="sig-prename descclassname"><span class="pre">setup.</span></span><span class="sig-name descname"><span class="pre">find_meta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/setup.html#find_meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#setup.find_meta" title="Link to this definition">¶</a></dt>
+<dd><p>Extract __*meta*__ from META_CONTENTS.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="setup.get_version_string">
+<span class="sig-prename descclassname"><span class="pre">setup.</span></span><span class="sig-name descname"><span class="pre">get_version_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/setup.html#get_version_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#setup.get_version_string" title="Link to this definition">¶</a></dt>
+<dd><p>Return package version as listed in <cite>__version__</cite> in meta file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="setup.is_canonical_version">
+<span class="sig-prename descclassname"><span class="pre">setup.</span></span><span class="sig-name descname"><span class="pre">is_canonical_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/setup.html#is_canonical_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#setup.is_canonical_version" title="Link to this definition">¶</a></dt>
+<dd><p>Check if a version string is in the canonical format of PEP 440.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="setup.read_file">
+<span class="sig-prename descclassname"><span class="pre">setup.</span></span><span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/setup.html#read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#setup.read_file" title="Link to this definition">¶</a></dt>
+<dd><p>Read content from a UTF-8 encoded text file.</p>
+</dd></dl>
+
 </section>
 
         </article>
@@ -273,14 +299,14 @@
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="core.utils.messages.html">
+          <a class="prev-page" href="djpro.utils.messages.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">core.utils.messages package</div>
+                <div class="title">djpro.utils.messages package</div>
                 
               </div>
             </a>
@@ -302,8 +328,30 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">setup module</a><ul>
+<li><a class="reference internal" href="#setup.find_meta"><code class="docutils literal notranslate"><span class="pre">find_meta()</span></code></a></li>
+<li><a class="reference internal" href="#setup.get_version_string"><code class="docutils literal notranslate"><span class="pre">get_version_string()</span></code></a></li>
+<li><a class="reference internal" href="#setup.is_canonical_version"><code class="docutils literal notranslate"><span class="pre">is_canonical_version()</span></code></a></li>
+<li><a class="reference internal" href="#setup.read_file"><code class="docutils literal notranslate"><span class="pre">read_file()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>core.utils.write_and_config - dj-pro 0.0.1 documentation</title>
+        <title>djpro.commands.help - dj-pro 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
@@ -204,10 +204,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../modules.html">dj-pro</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of dj-pro</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../core.html">core package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of core package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../core.commands.html">core.commands package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../core.utils.html">core.utils package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../core.utils.messages.html">core.utils.messages package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../djpro.html">djpro package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of djpro package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../djpro.commands.html">djpro.commands package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../djpro.utils.html">djpro.utils package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of djpro.utils package</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../djpro.utils.messages.html">djpro.utils.messages package</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../setup.html">setup module</a></li>
@@ -248,89 +250,71 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <h1>Source code for core.utils.write_and_config</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">..utils.logging</span> <span class="kn">import</span> <span class="n">logging</span><span class="p">,</span> <span class="n">log_with_color</span><span class="p">,</span> <span class="n">Fore</span>
-
-<span class="kn">from</span> <span class="nn">.files_content</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">settings_api</span><span class="p">,</span>
-    <span class="n">settings_unfold</span><span class="p">,</span>
-    <span class="n">settings_api_unfold</span><span class="p">,</span>
-    <span class="n">settings_base_content</span><span class="p">,</span>
-    <span class="n">requirements_api</span><span class="p">,</span>
-    <span class="n">requirements_unfold</span><span class="p">,</span>
-<span class="p">)</span>
+          <h1>Source code for djpro.commands.help</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..utils.logging</span> <span class="kn">import</span> <span class="n">logging</span><span class="p">,</span> <span class="n">log_with_color</span><span class="p">,</span> <span class="n">Fore</span>
 
 
-<div class="viewcode-block" id="create_dirs">
-<a class="viewcode-back" href="../../../core.utils.html#core.utils.write_and_config.create_dirs">[docs]</a>
-<span class="k">def</span> <span class="nf">create_dirs</span><span class="p">(</span><span class="n">dirs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Path</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to create folders&quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="nb">dir</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
-        <span class="nb">dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+<div class="viewcode-block" id="help">
+<a class="viewcode-back" href="../../../djpro.commands.html#djpro.commands.help.help">[docs]</a>
+<span class="k">def</span> <span class="nf">help</span><span class="p">():</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Command help guide:&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
 
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  dj-pro &lt;subcommand&gt; [options]&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+    <span class="p">)</span>
 
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Available subcommands:&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="create_files">
-<a class="viewcode-back" href="../../../core.utils.html#core.utils.write_and_config.create_files">[docs]</a>
-<span class="k">def</span> <span class="nf">create_files</span><span class="p">(</span><span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Path</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to create files.&quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-        <span class="n">file_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">file_path</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span></div>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  project          Creates a Django project with a scalable and modular architecture.&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">)</span>
 
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Options:&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="p">)</span>
 
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;    --api          Includes basic configuration for an API (Django REST Framework).&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;    --docker       Adds Docker configuration for easy deployment.&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;    --unfold       Adds Unfold custom theme to Django admin site.&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="write_to_file">
-<a class="viewcode-back" href="../../../core.utils.html#core.utils.write_and_config.write_to_file">[docs]</a>
-<span class="k">def</span> <span class="nf">write_to_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to write content.&quot;&quot;&quot;</span>
-    <span class="n">file_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span></div>
-
-
-
-<div class="viewcode-block" id="configure_requirements">
-<a class="viewcode-back" href="../../../core.utils.html#core.utils.write_and_config.configure_requirements">[docs]</a>
-<span class="k">def</span> <span class="nf">configure_requirements</span><span class="p">(</span><span class="n">api</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">unfold</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Config requirements content&quot;&quot;&quot;</span>
-    <span class="n">requirements</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="n">api</span><span class="p">:</span>
-        <span class="n">requirements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">requirements_api</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">unfold</span><span class="p">:</span>
-        <span class="n">requirements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">requirements_unfold</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">requirements</span><span class="p">)</span></div>
-
-
-
-<div class="viewcode-block" id="configure_settings_base">
-<a class="viewcode-back" href="../../../core.utils.html#core.utils.write_and_config.configure_settings_base">[docs]</a>
-<span class="k">def</span> <span class="nf">configure_settings_base</span><span class="p">(</span><span class="n">api</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">unfold</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Config settings content&quot;&quot;&quot;</span>
-
-    <span class="k">if</span> <span class="n">api</span> <span class="ow">and</span> <span class="n">unfold</span><span class="p">:</span>
-        <span class="n">log_with_color</span><span class="p">(</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
-            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Configuring Unfold...&quot;</span><span class="p">,</span>
-            <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
-            <span class="n">delay</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">settings_api_unfold</span>
-
-    <span class="k">if</span> <span class="n">api</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">settings_api</span>
-
-    <span class="k">if</span> <span class="n">unfold</span><span class="p">:</span>
-        <span class="n">log_with_color</span><span class="p">(</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
-            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Configuring Unfold...&quot;</span><span class="p">,</span>
-            <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
-            <span class="n">delay</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="n">settings_unfold</span>
-
-    <span class="k">return</span> <span class="n">settings_base_content</span>  <span class="c1"># Default</span></div>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  help          Displays the command help guide.&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">)</span></div>
 
 </pre></div>
         </article>
