@@ -71,6 +71,11 @@ IMPORTANT
 Before running your Django project using Docker Compose, you have to set your database
 configuration in ``.env.prod`` and ``.env.prod.db``.
 
+.. note::
+
+   ``.env.prod`` contains the environment variables needed to run Django.
+   ``.env.prod.db`` contains the environment variables to run the Docker ``db`` container.
+
 Then you can run the project using the following command:
 
 .. code-block:: shell
