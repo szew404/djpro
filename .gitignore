@@ -5,5 +5,4 @@ __pycache__
 env
 src
 .env
-requirements.txt
 local
