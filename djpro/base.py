@@ -22,7 +22,7 @@ class BaseCommand:
 
         if args.command == "help":
             try:
-                help_module = import_module("core.commands.help")
+                help_module = import_module("djpro.commands.help")
                 help_module.help()
             except ModuleNotFoundError:
                 log_with_color(
@@ -34,7 +34,7 @@ class BaseCommand:
             return
 
         try:
-            command_module = import_module(f"core.commands.{args.command}")
+            command_module = import_module(f"djpro.commands.{args.command}")
             log_with_color(logging.INFO, "Running commands...", Fore.BLUE, delay=2)
             command_module.run(args)
 
@@ -45,7 +45,7 @@ class BaseCommand:
                 Fore.YELLOW,
                 delay=1,
             )
-            help_module = import_module("core.commands.help")
+            help_module = import_module("djpro.commands.help")
             help_module.help()
 
     def add_command(self, name, help_message, arguments=None):
