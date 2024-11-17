@@ -32,5 +32,5 @@ __author_email__ = "gidaszewskifranco@gmail.com"
 __url__ = "https://djpro.readthedocs.io/en/latest/index.html"
 """The URL of the package."""
 
-__description__ = "Package that allows you to create a Django project using a modular and scalable architecture options like API configuration, DjangoAdminSite custom theme and Docker to optimize your development time"
+__description__ = "Package that allows you to create a Django project using a modular and scalable architecture with options like API configuration, DjangoAdminSite custom theme and Docker to optimize your development time"
 """The description of the package."""

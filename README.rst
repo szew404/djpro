@@ -5,7 +5,7 @@
 .. -teaser-begin-
 
 ``djpro`` is the Python package that allows you to create a Django project
-using a modular and scalable architecture options like API configuration,
+using a modular and scalable architecture with options like API configuration,
 DjangoAdminSite custom theme and Docker to optimize your development time.
 
 .. -teaser-end-
