@@ -5,7 +5,7 @@ Installation
 Requirements
 ============
 
-* `Django <https://www.djangoproject.com/>`_ >= 5.1
+* `Django <https://www.djangoproject.com/>`_ >= 5.0
 
 Installing djpro
 =================
@@ -20,7 +20,7 @@ The recommended installation method is `pip`_-installing into a
 
 .. note::
 
-   djpro will install ``Django 5.1 version`` if is not installed yet.
+   djpro will install ``Django 5.0 version`` if is not installed yet.
 
 
 .. _hosted_on_pypi: #
@@ -37,7 +37,7 @@ experience might be not as smooth:
 
 .. code-block:: console
 
-   $ pip install --upgrade https://github.com/szew404/dj-pro
+   $ pip install -e git://github.com/szew404/djpro#egg=djpro
 
 This command will download the latest version of dj-pro and install
 it to your system.
