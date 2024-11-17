@@ -4,17 +4,17 @@ Django Rest Framework project configuration
 .. -api-
 
 To include an API configuration (Django Rest Framework) to your project, adds the ``--api`` option
-to the general dj-pro project creation command:
+to the general djpro project creation command:
 
 .. code-block:: shell
 
-   dj-pro project YOUR-PROJECT-NAME --api
+   djpro project YOUR-PROJECT-NAME --api
 
 .. note::
 
    Change ``YOUR-PROJECT-NAME`` to your project name.
 
-``dj-pro`` will create a Django project including API configuration with the following structure:
+``djpro`` will create a Django project including API configuration with the following structure:
 
 .. code-block:: shell
 
@@ -58,7 +58,7 @@ to the general dj-pro project creation command:
 
 .. note::
 
-   dj-pro includes ``DRF Spectacular`` already configured for your API documentation.
+   djpro includes ``DRF Spectacular`` already configured for your API documentation.
    Find your docs configuration in ``settings_base``.
 
 * `Learn more about Django Rest Framework <https://www.django-rest-framework.org/>`_

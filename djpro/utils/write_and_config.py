@@ -1,3 +1,10 @@
+# This file is part of djpro.
+#
+# Copyright (c) 2024, Franco Gidaszewski <gidaszewskifranco@gmail.com>
+#
+# For the full copyright and license information, please view
+# the LICENSE.txt file that was distributed with this source code.
+
 from pathlib import Path
 from ..utils.logging import logging, log_with_color, Fore
 

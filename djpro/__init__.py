@@ -1,4 +1,4 @@
-# This file is part of dj-pro.
+# This file is part of djpro.
 #
 # Copyright (c) 2024, Franco Gidaszewski <gidaszewskifranco@gmail.com>
 #
@@ -29,7 +29,7 @@ __author__ = "Franco Gidaszewski"
 __author_email__ = "gidaszewskifranco@gmail.com"
 """The email of the author of the package."""
 
-__url__ = "https://example.com/"
+__url__ = "https://djpro.readthedocs.io/en/latest/index.html"
 """The URL of the package."""
 
 __description__ = "Package that allows you to create a Django project using a modular and scalable architecture options like API configuration, DjangoAdminSite custom theme and Docker to optimize your development time"

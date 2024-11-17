@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# This file is part of dj-pro.
+# This file is part of djpro.
 #
 # Copyright (c) 2024, Franco Gidaszewski <gidaszewskifranco@gmail.com>
 #
@@ -32,7 +32,7 @@ def read_file(filepath):
         return file_handle.read()
 
 
-PKG_NAME = "dj-pro"
+PKG_NAME = "djpro"
 PKG_DIR = path.abspath(path.dirname(__file__))
 META_PATH = path.join(PKG_DIR, "djpro", "__init__.py")
 META_CONTENTS = read_file(META_PATH)
@@ -126,7 +126,7 @@ INSTALL_REQUIRES = ["django>=5.0", "colorama>=0.4.6"]
 
 if __name__ == "__main__":
     setup(
-        name="dj-pro",
+        name=PKG_NAME,
         version=get_version_string(),
         author=find_meta("author"),
         author_email=find_meta("author_email"),
@@ -143,7 +143,7 @@ if __name__ == "__main__":
         python_requires=">=3.7",
         entry_points={
             "console_scripts": [
-                "dj-pro=djpro.base:main",
+                "djpro=djpro.base:main",
             ],
         },
     )

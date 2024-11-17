@@ -11,13 +11,13 @@ Execute the following line of code inside the root folder of your project:
 
 .. code-block:: shell
 
-   dj-pro project YOUR-PROJECT-NAME
+   djpro project YOUR-PROJECT-NAME
 
 .. note::
 
    Change ``YOUR-PROJECT-NAME`` to your project name.
 
-``dj-pro`` will create a Django project with the following structure:
+``djpro`` will create a Django project with the following structure:
 
 .. code-block:: shell
 

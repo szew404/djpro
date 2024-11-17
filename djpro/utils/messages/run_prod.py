@@ -8,7 +8,7 @@ def run_prod_messages():
     messages = [
         "Your production environment is almost ready to run...",
         "Learn how to setup and run your production environment using Docker Compose:\n",
-        "https://example/docker/\n",
+        "https://djpro.readthedocs.io/en/latest/quickstart.html#including-docker-configuration\n",
     ]
 
     for message in messages:

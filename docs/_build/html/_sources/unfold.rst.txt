@@ -4,11 +4,11 @@ Unfold configuration
 .. -unfold-
 
 To include the Unfold custom theme for Django Admin Site, adds the ``--unfold`` option
-to the general dj-pro project creation command:
+to the general djpro project creation command:
 
 .. code-block:: shell
 
-   dj-pro project YOUR-PROJECT-NAME --unfold
+   djpro project YOUR-PROJECT-NAME --unfold
 
 .. note::
 

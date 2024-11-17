@@ -1,3 +1,10 @@
+# This file is part of djpro.
+#
+# Copyright (c) 2024, Franco Gidaszewski <gidaszewskifranco@gmail.com>
+#
+# For the full copyright and license information, please view
+# the LICENSE.txt file that was distributed with this source code.
+
 from ..utils.logging import logging, log_with_color, Fore
 
 
@@ -11,7 +18,7 @@ def help():
 
     log_with_color(
         logging.INFO,
-        "\n  dj-pro <subcommand> [options]",
+        "\n  djpro <subcommand> [options]",
         Fore.BLUE,
     )
 

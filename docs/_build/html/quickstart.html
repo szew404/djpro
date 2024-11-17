@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Contributing" href="contributing.html" /><link rel="prev" title="Installation" href="install.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>Quick Start - dj-pro 0.0.1 documentation</title>
+        <title>Quick Start - djpro 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">dj-pro 0.0.1 documentation</div></a>
+      <a href="index.html"><div class="brand">djpro 0.0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">dj-pro 0.0.1 documentation</span>
+  <span class="sidebar-brand-text">djpro 0.0.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -263,14 +263,14 @@
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
 <p>Start by creating the architecture of a Django project.</p>
 <p>Execute the following line of code inside the root folder of your project:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>dj-pro<span class="w"> </span>project<span class="w"> </span>YOUR-PROJECT-NAME
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>djpro<span class="w"> </span>project<span class="w"> </span>YOUR-PROJECT-NAME
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Change <code class="docutils literal notranslate"><span class="pre">YOUR-PROJECT-NAME</span></code> to your project name.</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">dj-pro</span></code> will create a Django project with the following structure:</p>
+<p><code class="docutils literal notranslate"><span class="pre">djpro</span></code> will create a Django project with the following structure:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>root/
 ├──<span class="w"> </span>.env.dev
 ├──<span class="w"> </span>.gitignore
@@ -333,15 +333,15 @@ Add your new Module to <code class="docutils literal notranslate"><span class="p
 <section id="including-api-configuration">
 <h2>Including API configuration<a class="headerlink" href="#including-api-configuration" title="Link to this heading">¶</a></h2>
 <p>To include an API configuration (Django Rest Framework) to your project, adds the <code class="docutils literal notranslate"><span class="pre">--api</span></code> option
-to the general dj-pro project creation command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>dj-pro<span class="w"> </span>project<span class="w"> </span>YOUR-PROJECT-NAME<span class="w"> </span>--api
+to the general djpro project creation command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>djpro<span class="w"> </span>project<span class="w"> </span>YOUR-PROJECT-NAME<span class="w"> </span>--api
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Change <code class="docutils literal notranslate"><span class="pre">YOUR-PROJECT-NAME</span></code> to your project name.</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">dj-pro</span></code> will create a Django project including API configuration with the following structure:</p>
+<p><code class="docutils literal notranslate"><span class="pre">djpro</span></code> will create a Django project including API configuration with the following structure:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>root/
 ├──<span class="w"> </span>.env.dev
 ├──<span class="w"> </span>.gitignore
@@ -383,7 +383,7 @@ to the general dj-pro project creation command:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>dj-pro includes <code class="docutils literal notranslate"><span class="pre">DRF</span> <span class="pre">Spectacular</span></code> already configured for your API documentation.
+<p>djpro includes <code class="docutils literal notranslate"><span class="pre">DRF</span> <span class="pre">Spectacular</span></code> already configured for your API documentation.
 Find your docs configuration in <code class="docutils literal notranslate"><span class="pre">settings_base</span></code>.</p>
 </div>
 <ul class="simple">
@@ -394,8 +394,8 @@ Find your docs configuration in <code class="docutils literal notranslate"><span
 <section id="adding-a-custom-theme-for-django-admin-site">
 <h2>Adding a custom theme for Django Admin Site<a class="headerlink" href="#adding-a-custom-theme-for-django-admin-site" title="Link to this heading">¶</a></h2>
 <p>To include the Unfold custom theme for Django Admin Site, adds the <code class="docutils literal notranslate"><span class="pre">--unfold</span></code> option
-to the general dj-pro project creation command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>dj-pro<span class="w"> </span>project<span class="w"> </span>YOUR-PROJECT-NAME<span class="w"> </span>--unfold
+to the general djpro project creation command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>djpro<span class="w"> </span>project<span class="w"> </span>YOUR-PROJECT-NAME<span class="w"> </span>--unfold
 </pre></div>
 </div>
 <div class="admonition note">
@@ -410,15 +410,15 @@ Find your unfold configuration in <code class="docutils literal notranslate"><sp
 <section id="including-docker-configuration">
 <h2>Including Docker configuration<a class="headerlink" href="#including-docker-configuration" title="Link to this heading">¶</a></h2>
 <p>To include Docker configuration to your project, adds the <code class="docutils literal notranslate"><span class="pre">--docker</span></code> option
-to the general dj-pro project creation command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>dj-pro<span class="w"> </span>project<span class="w"> </span>YOUR-PROJECT-NAME<span class="w"> </span>--docker
+to the general djpro project creation command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>djpro<span class="w"> </span>project<span class="w"> </span>YOUR-PROJECT-NAME<span class="w"> </span>--docker
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Change <code class="docutils literal notranslate"><span class="pre">YOUR-PROJECT-NAME</span></code> to your project name.</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">dj-pro</span></code> will create a Django project including API configuration with the following structure:</p>
+<p><code class="docutils literal notranslate"><span class="pre">djpro</span></code> will create a Django project including API configuration with the following structure:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>root/
 ├──<span class="w"> </span>.env.dev
 ├──<span class="w"> </span>.env.prod
@@ -464,7 +464,7 @@ to the general dj-pro project creation command:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>dj-pro automatically sets a <code class="docutils literal notranslate"><span class="pre">production</span> <span class="pre">environment</span></code> when the <code class="docutils literal notranslate"><span class="pre">--docker</span></code> option is run,
+<p>djpro automatically sets a <code class="docutils literal notranslate"><span class="pre">production</span> <span class="pre">environment</span></code> when the <code class="docutils literal notranslate"><span class="pre">--docker</span></code> option is run,
 you can change this by modifying the <code class="docutils literal notranslate"><span class="pre">DJANGO_ENV</span></code> from <code class="docutils literal notranslate"><span class="pre">prod</span></code> to <code class="docutils literal notranslate"><span class="pre">dev</span></code> in <code class="docutils literal notranslate"><span class="pre">config/.env.conf</span></code>.</p>
 </div>
 <section id="important">

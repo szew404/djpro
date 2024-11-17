@@ -7,20 +7,20 @@ Requirements
 
 * `Django <https://www.djangoproject.com/>`_ >= 5.1
 
-Installing dj-pro
+Installing djpro
 =================
 
-dj-pro is a Python-only package `hosted_on_pypi`_.
+djpro is a Python-only package `hosted_on_pypi`_.
 The recommended installation method is `pip`_-installing into a
 :mod:`virtualenv <python:venv>`:
 
 .. code-block:: console
 
-   $ python -m pip install dj-pro
+   $ python -m pip install djpro
 
 .. note::
 
-   dj-pro will install ``Django 5.1 version`` if is not installed yet.
+   djpro will install ``Django 5.1 version`` if is not installed yet.
 
 
 .. _hosted_on_pypi: #

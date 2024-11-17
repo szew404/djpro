@@ -4,17 +4,17 @@ Docker configuration for easy deployment
 .. -docker-
 
 To include Docker configuration to your project, adds the ``--docker`` option
-to the general dj-pro project creation command:
+to the general djpro project creation command:
 
 .. code-block:: shell
 
-   dj-pro project YOUR-PROJECT-NAME --docker
+   djpro project YOUR-PROJECT-NAME --docker
 
 .. note::
 
    Change ``YOUR-PROJECT-NAME`` to your project name.
 
-``dj-pro`` will create a Django project including API configuration with the following structure:
+``djpro`` will create a Django project including API configuration with the following structure:
 
 .. code-block:: shell
 
@@ -62,7 +62,7 @@ to the general dj-pro project creation command:
 
 .. note::
 
-   dj-pro automatically sets a ``production environment`` when the ``--docker`` option is run,
+   djpro automatically sets a ``production environment`` when the ``--docker`` option is run,
    you can change this by modifying the ``DJANGO_ENV`` from ``prod`` to ``dev`` in ``config/.env.conf``.
 
 IMPORTANT
