@@ -1,5 +1,5 @@
 =======================================
-Welcome to dj-pro documentation
+Welcome to djpro documentation
 =======================================
 
 Release v\ |release|
