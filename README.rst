@@ -37,7 +37,7 @@ Project Information
 ``djpro`` is released under the `MIT / X11 License <https://choosealicense.com/licenses/mit/>`__,
 its documentation lives at `Read the Docs <https://djpro.readthedocs.io/en/latest/>`_,
 the code on `GitHub <https://github.com/szew404/djpro>`_,
-and the latest release on `PyPI <#>`_.
+and the latest release on `PyPI <https://pypi.org/project/djpro/>`_.
 
 If you'd like to contribute to ``djpro`` you're most welcome!
 
