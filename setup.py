@@ -86,7 +86,6 @@ KEYWORDS = [
 CLASSIFIERS = [
     "Development Status :: 4 - Beta ",
     "Framework :: Django",
-    "Framework :: Django :: 1.11",
     "Framework :: Django :: 2.0",
     "Framework :: Django :: 2.1",
     "Framework :: Django :: 2.2",
@@ -96,6 +95,9 @@ CLASSIFIERS = [
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
     "Operating System :: OS Independent",
     "Intended Audience :: Developers",
     "Natural Language :: English",
@@ -122,7 +124,10 @@ PROJECT_URLS = {
 }
 
 # Dependencies that are downloaded by pip on installation
-INSTALL_REQUIRES = ["django>=5.0", "colorama>=0.4.6"]
+INSTALL_REQUIRES = [
+    "django>=5.0",  # djpro needs a Django function to create a SECRET KEY.
+    "colorama>=0.4.6",  # logging colors
+]
 
 if __name__ == "__main__":
     setup(

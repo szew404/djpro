@@ -20,7 +20,7 @@ The recommended installation method is `pip`_-installing into a
 
 .. note::
 
-   djpro will install ``Django 5.0 version`` if is not installed yet.
+   djpro will install ``the latest version of Django`` if is not installed yet.
 
 
 .. _hosted_on_pypi: #
