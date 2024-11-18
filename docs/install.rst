@@ -10,7 +10,7 @@ Requirements
 Installing djpro
 =================
 
-djpro is a Python-only package `hosted_on_pypi`_.
+djpro is a Python-only package `hosted_on_pypi <https://pypi.org/project/djpro/>`_.
 The recommended installation method is `pip`_-installing into a
 :mod:`virtualenv <python:venv>`:
 

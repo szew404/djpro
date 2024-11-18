@@ -78,8 +78,8 @@ You can create a new Module executing the following commands:
 .. note::
 
    Change ``YOUR-MODULE-NAME`` to your Module name.
-   Create a new ``__init__.py`` file inside your Module folder.
-   Add your new Module to ``INSTALED_APPS`` in ``config/settings_base``.
+
+Create a new ``__init__.py`` file inside your Module folder and add your new Module to ``INSTALED_APPS`` in ``config/settings_base``.
 
 ----
 
