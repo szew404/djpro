@@ -68,18 +68,51 @@ Create a new Module
 
    We call ``modules`` to the applications contained in your Django project.
 
-You can create a new Module executing the following commands:
+You can create a new Module in your existing project executing the following command:
 
 .. code-block:: shell
 
-   cd src/modules
-   mkdir YOUR-MODULE-NAME
+   djpro module YOUR-MODULE-NAME
 
 .. note::
 
    Change ``YOUR-MODULE-NAME`` to your Module name.
-   Create a new ``__init__.py`` file inside your Module folder.
-   Add your new Module to ``INSTALED_APPS`` in ``config/settings_base``.
+
+.. note::
+
+   IMPORTANT: The ``module`` subcommand needs to find the ``src`` folder. Run the command in the root folder of your project.
+
+You can also add the files you want to be created in your module:
+
+.. code-block:: shell
+
+   djpro module YOUR-MODULE-NAME -models -views -urls
+
+.. note::
+
+   This command will create the module folder including the ``models.py``, ``views.py`` and ``urls.py`` files.
+
+.. code-block:: shell
+
+    root/
+    └── src/
+        └── modules/
+            ├── __init__.py
+            └── YOUR-MODULE/
+                ├── __init__.py
+                ├── models.py
+                ├── urls.py
+                └── views.py
+
+See the list of available files:
+
+.. code-block:: shell
+   
+   -models
+   -views
+   -serializers
+   -urls
+   -forms
 
 ----
 

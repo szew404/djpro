@@ -281,7 +281,14 @@
         <span class="n">args</span><span class="o">.</span><span class="n">base_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;src&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
+            <span class="n">log_with_color</span><span class="p">(</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Command not found.&quot;</span><span class="p">,</span>
+                <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+                <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">help_module</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;djpro.commands.help&quot;</span><span class="p">)</span>
+            <span class="n">help_module</span><span class="o">.</span><span class="n">help</span><span class="p">()</span>
             <span class="k">return</span>
 
         <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s2">&quot;help&quot;</span><span class="p">:</span>
@@ -330,6 +337,14 @@
 <a class="viewcode-back" href="../../djpro.html#djpro.base.main">[docs]</a>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">cli</span> <span class="o">=</span> <span class="n">BaseCommand</span><span class="p">()</span>
+
+    <span class="c1"># Help</span>
+    <span class="n">cli</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Show help for a command.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Project</span>
     <span class="n">cli</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span>
         <span class="s2">&quot;project&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Create a new project.&quot;</span><span class="p">,</span>
@@ -352,10 +367,55 @@
             <span class="p">},</span>
         <span class="p">},</span>
     <span class="p">)</span>
+
+    <span class="c1"># Add service</span>
     <span class="n">cli</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span>
-        <span class="s2">&quot;help&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Show help for a command.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;service&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Add a new service to your current project.&quot;</span><span class="p">,</span>
+        <span class="n">arguments</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;--unfold&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Add Unfold configuration to your current project.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;--docker&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Add Docker configuration to your current project.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
     <span class="p">)</span>
+
+    <span class="c1"># Module</span>
+    <span class="n">cli</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span>
+        <span class="s2">&quot;module&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Create a new module.&quot;</span><span class="p">,</span>
+        <span class="n">arguments</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;module_name&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Create a new module in your current project.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;-models&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Include models.py file.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;-views&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Include views.py file.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;-serializers&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Include serializers.py file.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;-urls&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Include urls.py file.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;-forms&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Include forms.py file.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
     <span class="n">cli</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span></div>
 
 </pre></div>

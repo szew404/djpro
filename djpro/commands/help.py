@@ -19,7 +19,7 @@ def help():
     log_with_color(
         logging.INFO,
         "\n  djpro <subcommand> [options]",
-        Fore.BLUE,
+        Fore.GREEN,
     )
 
     log_with_color(
@@ -30,7 +30,7 @@ def help():
 
     log_with_color(
         logging.INFO,
-        "\n  project          Creates a Django project with a scalable and modular architecture.",
+        "\n  project            Creates a Django project with a scalable and modular architecture.",
         Fore.YELLOW,
         delay=0.5,
     )
@@ -44,26 +44,71 @@ def help():
 
     log_with_color(
         logging.INFO,
-        "    --api          Includes basic configuration for an API (Django REST Framework).",
+        "    --api              Includes basic configuration for an API (Django REST Framework).",
         Fore.BLUE,
         delay=0.2,
     )
     log_with_color(
         logging.INFO,
-        "    --docker       Adds Docker configuration for easy deployment.",
+        "    --docker           Adds Docker configuration for easy deployment.",
         Fore.BLUE,
         delay=0.2,
     )
     log_with_color(
         logging.INFO,
-        "    --unfold       Adds Unfold custom theme to Django admin site.",
+        "    --unfold           Adds Unfold custom theme to Django admin site.",
         Fore.BLUE,
         delay=0.2,
     )
 
     log_with_color(
         logging.INFO,
-        "\n  help          Displays the command help guide.",
+        "\n  module             Creates a new module in your current project.",
+        Fore.YELLOW,
+        delay=0.5,
+    )
+
+    log_with_color(
+        logging.INFO,
+        "\n  Options:",
+        Fore.WHITE,
+        delay=0.3,
+    )
+
+    log_with_color(
+        logging.INFO,
+        "    -models            Include models.py file.",
+        Fore.BLUE,
+        delay=0.2,
+    )
+    log_with_color(
+        logging.INFO,
+        "    -views             Include views.py file",
+        Fore.BLUE,
+        delay=0.2,
+    )
+    log_with_color(
+        logging.INFO,
+        "    -serializers       Include serializers.py file.",
+        Fore.BLUE,
+        delay=0.2,
+    )
+    log_with_color(
+        logging.INFO,
+        "    -urls              Include urls.py file",
+        Fore.BLUE,
+        delay=0.2,
+    )
+    log_with_color(
+        logging.INFO,
+        "    -forms             Include forms.py file",
+        Fore.BLUE,
+        delay=0.2,
+    )
+
+    log_with_color(
+        logging.INFO,
+        "\n  help               Displays the command help guide.",
         Fore.YELLOW,
         delay=0.5,
     )

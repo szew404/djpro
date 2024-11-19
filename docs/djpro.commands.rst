@@ -12,6 +12,14 @@ djpro.commands.help module
    :undoc-members:
    :show-inheritance:
 
+djpro.commands.module module
+-----------------------------
+
+.. automodule:: djpro.commands.module
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 djpro.commands.project module
 -----------------------------
 

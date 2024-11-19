@@ -316,16 +316,44 @@ python<span class="w"> </span>bin/manage.py<span class="w"> </span>runserver
 <p class="admonition-title">Note</p>
 <p>We call <code class="docutils literal notranslate"><span class="pre">modules</span></code> to the applications contained in your Django project.</p>
 </div>
-<p>You can create a new Module executing the following commands:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>src/modules
-mkdir<span class="w"> </span>YOUR-MODULE-NAME
+<p>You can create a new Module in your existing project executing the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>djpro<span class="w"> </span>module<span class="w"> </span>YOUR-MODULE-NAME
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Change <code class="docutils literal notranslate"><span class="pre">YOUR-MODULE-NAME</span></code> to your Module name.
-Create a new <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file inside your Module folder.
-Add your new Module to <code class="docutils literal notranslate"><span class="pre">INSTALED_APPS</span></code> in <code class="docutils literal notranslate"><span class="pre">config/settings_base</span></code>.</p>
+<p>Change <code class="docutils literal notranslate"><span class="pre">YOUR-MODULE-NAME</span></code> to your Module name.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IMPORTANT: The <code class="docutils literal notranslate"><span class="pre">module</span></code> subcommand needs to find the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder. Run the command in the root folder of your project.</p>
+</div>
+<p>You can also add the files you want to be created in your module:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>djpro<span class="w"> </span>module<span class="w"> </span>YOUR-MODULE-NAME<span class="w"> </span>-models<span class="w"> </span>-views<span class="w"> </span>-urls
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command will create the module folder including the <code class="docutils literal notranslate"><span class="pre">models.py</span></code>, <code class="docutils literal notranslate"><span class="pre">views.py</span></code> and <code class="docutils literal notranslate"><span class="pre">urls.py</span></code> files.</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>root/
+└──<span class="w"> </span>src/
+<span class="w">    </span>└──<span class="w"> </span>modules/
+<span class="w">        </span>├──<span class="w"> </span>__init__.py
+<span class="w">        </span>└──<span class="w"> </span>YOUR-MODULE/
+<span class="w">            </span>├──<span class="w"> </span>__init__.py
+<span class="w">            </span>├──<span class="w"> </span>models.py
+<span class="w">            </span>├──<span class="w"> </span>urls.py
+<span class="w">            </span>└──<span class="w"> </span>views.py
+</pre></div>
+</div>
+<p>See the list of available files:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>-models
+-views
+-serializers
+-urls
+-forms
+</pre></div>
 </div>
 </section>
 </section>

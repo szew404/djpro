@@ -24,7 +24,14 @@ class BaseCommand:
         args.base_dir = os.path.join(os.getcwd(), "src")
 
         if not args.command:
-            self.parser.print_help()
+            log_with_color(
+                logging.INFO,
+                "\nCommand not found.",
+                Fore.YELLOW,
+                delay=1,
+            )
+            help_module = import_module("djpro.commands.help")
+            help_module.help()
             return
 
         if args.command == "help":
@@ -66,6 +73,14 @@ class BaseCommand:
 
 def main():
     cli = BaseCommand()
+
+    # Help
+    cli.add_command(
+        "help",
+        "Show help for a command.",
+    )
+
+    # Project
     cli.add_command(
         "project",
         "Create a new project.",
@@ -88,8 +103,53 @@ def main():
             },
         },
     )
+
+    # Add service
     cli.add_command(
-        "help",
-        "Show help for a command.",
+        "service",
+        "Add a new service to your current project.",
+        arguments={
+            "--unfold": {
+                "help": "Add Unfold configuration to your current project.",
+                "action": "store_true",
+            },
+            "--docker": {
+                "help": "Add Docker configuration to your current project.",
+                "action": "store_true",
+            },
+        },
     )
+
+    # Module
+    cli.add_command(
+        "module",
+        "Create a new module.",
+        arguments={
+            "module_name": {
+                "help": "Create a new module in your current project.",
+                "type": str,
+            },
+            "-models": {
+                "help": "Include models.py file.",
+                "action": "store_true",
+            },
+            "-views": {
+                "help": "Include views.py file.",
+                "action": "store_true",
+            },
+            "-serializers": {
+                "help": "Include serializers.py file.",
+                "action": "store_true",
+            },
+            "-urls": {
+                "help": "Include urls.py file.",
+                "action": "store_true",
+            },
+            "-forms": {
+                "help": "Include forms.py file.",
+                "action": "store_true",
+            },
+        },
+    )
+
     cli.execute()
