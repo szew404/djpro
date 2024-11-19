@@ -5,7 +5,7 @@
 .. -teaser-begin-
 
 ``djpro`` is the Python package that allows you to create a Django project
-using a modular and scalable architecture options like API configuration,
+using a modular and scalable architecture with options like API configuration,
 DjangoAdminSite custom theme and Docker to optimize your development time.
 
 .. -teaser-end-
@@ -37,7 +37,7 @@ Project Information
 ``djpro`` is released under the `MIT / X11 License <https://choosealicense.com/licenses/mit/>`__,
 its documentation lives at `Read the Docs <https://djpro.readthedocs.io/en/latest/>`_,
 the code on `GitHub <https://github.com/szew404/djpro>`_,
-and the latest release on `PyPI <#>`_.
+and the latest release on `PyPI <https://pypi.org/project/djpro/>`_.
 
 If you'd like to contribute to ``djpro`` you're most welcome!
 

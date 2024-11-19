@@ -38,6 +38,48 @@ META_PATH = path.join(PKG_DIR, "djpro", "__init__.py")
 META_CONTENTS = read_file(META_PATH)
 
 
+def load_long_description():
+    """Load long description from file README.rst."""
+
+    def changes():
+        changelog = path.join(PKG_DIR, "CHANGELOG.rst")
+        pattern = (
+            r"(`(v\d+.\d+.\d+)`_( - \d{1,2}-\w+-\d{4}\r?\n-+\r?\n.*?))"
+            r"\r?\n\r?\n\r?\n`v\d+.\d+.\d+`_"
+        )
+        result = re.search(pattern, read_file(changelog), re.S)
+
+        return result.group(2) + result.group(3) if result else ""
+
+    try:
+        title = PKG_NAME
+        head = "=" * (len(title))
+
+        contents = (
+            head,
+            format(title.strip(" .")),
+            head,
+            read_file(path.join(PKG_DIR, "README.rst")).split(".. -teaser-begin-")[1],
+            "",
+            read_file(path.join(PKG_DIR, "CONTRIBUTING.rst")),
+            "",
+            "Release Information",
+            "===================\n",
+            changes(),
+            "",
+            "`Full changelog <{}/en/latest/changelog.html>`_.".format(find_meta("url")),
+            "",
+            read_file(path.join(PKG_DIR, "SECURITY.rst")),
+            "",
+            read_file(path.join(PKG_DIR, "AUTHORS.rst")),
+        )
+
+        return "\n".join(contents)
+    except (RuntimeError, FileNotFoundError) as read_error:
+        message = "Long description could not be read from README.rst"
+        raise RuntimeError("%s: %s" % (message, read_error)) from read_error
+
+
 def is_canonical_version(version):
     """Check if a version string is in the canonical format of PEP 440."""
     pattern = (
@@ -137,6 +179,8 @@ if __name__ == "__main__":
         author_email=find_meta("author_email"),
         license=find_meta("license"),
         description=find_meta("description"),
+        long_description=load_long_description(),
+        long_description_content_type="text/x-rst",
         url=find_meta("url"),
         project_urls=PROJECT_URLS,
         classifiers=CLASSIFIERS,

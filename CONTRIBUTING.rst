@@ -1,15 +1,15 @@
 Contributing
 ============
 
-If you would like to contribute to ``dj-pro``, please take a look at the
-`current issues <https://github.com/szew404/dj-pro/issues>`_.  If there is
+If you would like to contribute to ``djpro``, please take a look at the
+`current issues <https://github.com/szew404/djpro/issues>`_.  If there is
 a bug or feature that you want but it isn't listed, make an issue and work on it.
 
 Bug reports
 -----------
 
 *Before raising an issue, please ensure that you are using the latest version
-of dj-pro.*
+of djpro.*
 
 Please provide the following information with your issue to enable us to
 respond as quickly as possible.
@@ -53,7 +53,7 @@ project:
 
 1. Check for open issues or open a fresh issue to start a discussion around a
    feature idea or a bug.
-2. Fork `the repository <https://github.com/szew404/dj-pro>`_
+2. Fork `the repository <https://github.com/szew404/djpro>`_
    on GitHub to start making your changes to the ``develop`` branch
    (or branch off of it).
 3. Write a test which shows that the bug was fixed or that the feature works as

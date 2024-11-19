@@ -17,7 +17,7 @@ from .base import *
 __copyright__ = "Copyright (c) 2024-2034, Franco Gidaszewski"
 """The copyright notice of the package."""
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 """The version of the package."""
 
 __license__ = "MIT"
@@ -32,5 +32,5 @@ __author_email__ = "gidaszewskifranco@gmail.com"
 __url__ = "https://djpro.readthedocs.io/en/latest/index.html"
 """The URL of the package."""
 
-__description__ = "Package that allows you to create a Django project using a modular and scalable architecture options like API configuration, DjangoAdminSite custom theme and Docker to optimize your development time"
+__description__ = "Package that allows you to create a Django project using a modular and scalable architecture with options like API configuration, DjangoAdminSite custom theme and Docker to optimize your development time"
 """The description of the package."""
