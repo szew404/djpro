@@ -9,6 +9,11 @@ settings_content = """# Django settings for {project_name} project.
 # https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
+import environ
+
+ENV_PATH_CONF = os.path.dirname(os.path.abspath(__file__))
+
+environ.Env.read_env(os.path.join(ENV_PATH_CONF, ".env.conf"))
 
 ENVIRONMENT = os.getenv("DJANGO_ENV", "dev")
 
@@ -74,8 +79,6 @@ STATIC_ROOT = BASE_DIR / "static"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-STATICFILES_DIRS = (BASE_DIR / "static",)
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -101,7 +104,7 @@ env = environ.Env(
     # default value
 
     DEBUG=(bool, False),
-    ALLOWED_HOSTS=(str, ""),
+    ALLOWED_HOSTS=(str, "*"),
 
     SQL_ENGINE=(str, "django.db.backends.sqlite3"),
     SQL_DATABASE=(str, "db.sqlite3"),
@@ -148,16 +151,7 @@ import environ
 
 env = environ.Env(
     # default value
-
     DEBUG=(bool, False),
-    ALLOWED_HOSTS=(str, ""),
-    
-    SQL_ENGINE=(str, "django.db.backends.sqlite3"),
-    SQL_DATABASE=(str, "db.sqlite3"),
-    SQL_USER=(str, "user"),
-    SQL_PASSWORD=(str, "password"),
-    SQL_HOST=(str, "localhost"),
-    SQL_PORT=(str, "5432"),
 )
 
 ENV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -188,7 +182,7 @@ DATABASES = {
         "NAME": env("SQL_DATABASE"),
         "USER": env("SQL_USER"),
         "PASSWORD": env("SQL_PASSWORD"),
-        "HOST": env("SQL_HOST"),
+        "HOST": "db",
         "PORT": env("SQL_PORT"),
     }
 }
@@ -593,6 +587,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
 application = get_wsgi_application()
@@ -659,6 +654,7 @@ urlpatterns = [
 
     # Including a new module
     path("auth/", include("modules.authentication.urls")),
+    path("api/", include("modules.api.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 """
