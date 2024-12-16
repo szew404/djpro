@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>djpro.commands.help - djpro 0.0.1 documentation</title>
+        <title>djpro.commands.help - djpro</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
@@ -165,7 +165,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">djpro 0.0.1 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">djpro</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
   
   
-  <span class="sidebar-brand-text">djpro 0.0.1 documentation</span>
+  <span class="sidebar-brand-text">djpro</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -283,89 +283,193 @@
         <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
     <span class="p">)</span>
 
+    <span class="c1"># project</span>
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  project            Creates a Django project with a scalable and modular architecture.&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
-        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Options:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;  Options:&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;    --api              Includes basic configuration for an API (Django REST Framework).&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;    --docker           Adds Docker configuration for easy deployment.&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;    --unfold           Adds Unfold custom theme to Django admin site.&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
 
+    <span class="c1"># module</span>
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  module             Creates a new module in your current project.&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
-        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Options:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;  Options:&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;    -models            Include models.py file.&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;    -views             Include views.py file&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;    -serializers       Include serializers.py file.&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;    -urls              Include urls.py file&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
         <span class="s2">&quot;    -forms             Include forms.py file&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># man</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  man                Run manage.py commands easier.&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;  Usage:&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
-        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  help               Displays the command help guide.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;    djpro man &lt;command&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="man_help">
+<a class="viewcode-back" href="../../../djpro.commands.html#djpro.commands.help.man_help">[docs]</a>
+<span class="k">def</span> <span class="nf">man_help</span><span class="p">():</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Command help guide:&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">GREEN</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Available subcommands:&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[auth]&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
-        <span class="n">delay</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;  changepassword</span><span class="se">\n</span><span class="s2">  createsuperuser&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[contenttypes]&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;  remove_stale_contenttypes&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[django]&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;  check</span><span class="se">\n</span><span class="s2">  compilemessages</span><span class="se">\n</span><span class="s2">  createcachetable</span><span class="se">\n</span><span class="s2">  dbshell</span><span class="se">\n</span><span class="s2">  diffsettings</span><span class="se">\n</span><span class="s2">  dumpdata</span><span class="se">\n</span><span class="s2">  flush</span><span class="se">\n</span><span class="s2">  inspectdb</span><span class="se">\n</span><span class="s2">  loaddata</span><span class="se">\n</span><span class="s2">  makemessages</span><span class="se">\n</span><span class="s2">  makemigrations</span><span class="se">\n</span><span class="s2">  migrate</span><span class="se">\n</span><span class="s2">  optimizemigration</span><span class="se">\n</span><span class="s2">  sendtestemail</span><span class="se">\n</span><span class="s2">  shell</span><span class="se">\n</span><span class="s2">  showmigrations</span><span class="se">\n</span><span class="s2">  sqlflush</span><span class="se">\n</span><span class="s2">  sqlmigrate</span><span class="se">\n</span><span class="s2">  sqlsequencereset</span><span class="se">\n</span><span class="s2">  squashmigrations</span><span class="se">\n</span><span class="s2">  startapp</span><span class="se">\n</span><span class="s2">  startproject</span><span class="se">\n</span><span class="s2">  test</span><span class="se">\n</span><span class="s2">  testserver</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[sessions]&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;  clearsessions&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[staticfiles]&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;  collectstatic</span><span class="se">\n</span><span class="s2">  findstatic</span><span class="se">\n</span><span class="s2">  runserver&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span></div>
 
 </pre></div>
@@ -380,7 +484,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2024, Franco Gidaszewski
+                Copyright &#169; 2024-2024, Franco Gidaszewski
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -400,7 +504,7 @@
       
     </aside>
   </div>
-</div><script src="../../../_static/documentation_options.js?v=d45e8c67"></script>
+</div><script src="../../../_static/documentation_options.js?v=282f96c0"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>

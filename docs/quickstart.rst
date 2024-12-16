@@ -58,8 +58,8 @@ Run your Django project executing the following commands inside the folder ``src
 .. code-block:: shell
 
    pip install -r requirements.txt
-   python bin/manage.py collectstatic
-   python bin/manage.py runserver
+   djpro man collectstatic
+   djpro man runserver
 
 Create a new Module
 -------------------
@@ -113,6 +113,18 @@ See the list of available files:
    -serializers
    -urls
    -forms
+
+Run the develop environment locally
+-----------------------------------
+
+.. code-block:: shell
+
+   djpro man runserver
+
+.. note::
+
+   The ``man`` command was created to make it faster and easier to run the ``manage.py`` commands in Django.
+   `Find out more about its use <man>`_.
 
 ----
 
