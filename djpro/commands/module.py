@@ -25,12 +25,21 @@ def create_module(
         raise FileNotFoundError(
             log_with_color(
                 logging.INFO,
-                f"\nThe 'module' directory does not exist in {base_dir_path}. \nRun this command in the root folder of your project.",
+                f"\nThe 'modules' directory does not exist in {base_dir_path}. \nRun this command in the root folder of your project.",
                 Fore.YELLOW,
             )
         )
 
     new_module_dir = modules_dir / module_name
+
+    if new_module_dir.exists():
+        raise FileExistsError(
+            log_with_color(
+                logging.INFO,
+                f"\nThe module '{module_name}' already exists.",
+                Fore.YELLOW,
+            )
+        )
 
     files = [
         new_module_dir / "__init__.py",
@@ -65,9 +74,5 @@ def run(args):
             args=args,
         )
 
-    except Exception as e:
-        log_with_color(
-            logging.INFO,
-            f"\nError while creating module: {e}",
-            Fore.RED,
-        )
+    except Exception:
+        return
