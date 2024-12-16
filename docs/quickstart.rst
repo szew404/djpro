@@ -124,7 +124,7 @@ Run the develop environment locally
 .. note::
 
    The ``man`` command was created to make it faster and easier to run the ``manage.py`` commands in Django.
-   `Find out more about its use <man>`.
+   `Find out more about its use <man.html>`.
 
 ----
 
