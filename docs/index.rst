@@ -2,7 +2,7 @@
 Welcome to djpro documentation
 =======================================
 
-Release v\ |release|
+Release v\ |release| (`What's new? <changelog>`).
 
 .. include:: ../README.rst
    :start-after: -teaser-begin-

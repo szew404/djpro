@@ -104,7 +104,7 @@ def main():
         },
     )
 
-    # Add service
+    # Add service (not implemented)
     cli.add_command(
         "service",
         "Add a new service to your current project.",
@@ -147,6 +147,22 @@ def main():
             },
             "-forms": {
                 "help": "Include forms.py file.",
+                "action": "store_true",
+            },
+        },
+    )
+
+    # Simplify manage.py commands
+    cli.add_command(
+        "man",
+        "Run manage.py commands in a shorter form.",
+        arguments={
+            "man_command": {
+                "help": "The manage.py command you want to run.",
+                "type": str,
+            },
+            "help": {
+                "help": "View list of available manage.py commands.",
                 "action": "store_true",
             },
         },

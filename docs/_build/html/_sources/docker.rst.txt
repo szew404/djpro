@@ -82,11 +82,16 @@ Then you can run the project using the following command:
 
    docker-compose up --build -d
 
-Aplying migrations:
+Aplying migrations and collecting static files:
 
 .. code-block:: shell
 
    docker-compose exec web python src/bin/manage.py migrate --noinput
+   docker-compose exec web python src/bin/manage.py collectstatic
+
+.. note::
+
+   If you want to run the project on local using Docker, then you will have to change to 'True' the DEBUG mode on ``settings_prod.py``.
 
 * `Learn more about Docker <https://docs.docker.com/>`_
 

@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Contributing" href="contributing.html" /><link rel="prev" title="Installation" href="install.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>Quick Start - djpro 0.0.1 documentation</title>
+        <title>Quick Start - djpro</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">djpro 0.0.1 documentation</div></a>
+      <a href="index.html"><div class="brand">djpro</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">djpro 0.0.1 documentation</span>
+  <span class="sidebar-brand-text">djpro</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -236,12 +236,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="_sources/quickstart.rst.txt" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
-</div>
+          
+
 <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
@@ -306,8 +302,8 @@
 </div>
 <p>Run your Django project executing the following commands inside the folder <code class="docutils literal notranslate"><span class="pre">src</span></code>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-python<span class="w"> </span>bin/manage.py<span class="w"> </span>collectstatic
-python<span class="w"> </span>bin/manage.py<span class="w"> </span>runserver
+djpro<span class="w"> </span>man<span class="w"> </span>collectstatic
+djpro<span class="w"> </span>man<span class="w"> </span>runserver
 </pre></div>
 </div>
 <section id="create-a-new-module">
@@ -354,6 +350,17 @@ python<span class="w"> </span>bin/manage.py<span class="w"> </span>runserver
 -urls
 -forms
 </pre></div>
+</div>
+</section>
+<section id="run-the-develop-environment-locally">
+<h3>Run the develop environment locally<a class="headerlink" href="#run-the-develop-environment-locally" title="Link to this heading">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>djpro<span class="w"> </span>man<span class="w"> </span>runserver
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">man</span></code> command was created to make it faster and easier to run the <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> commands in Django.
+<a class="reference external" href="man">Find out more about its use</a>.</p>
 </div>
 </section>
 </section>
@@ -508,9 +515,14 @@ configuration in <code class="docutils literal notranslate"><span class="pre">.e
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker-compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>-d
 </pre></div>
 </div>
-<p>Aplying migrations:</p>
+<p>Aplying migrations and collecting static files:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>web<span class="w"> </span>python<span class="w"> </span>src/bin/manage.py<span class="w"> </span>migrate<span class="w"> </span>--noinput
+docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>web<span class="w"> </span>python<span class="w"> </span>src/bin/manage.py<span class="w"> </span>collectstatic
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to run the project on local using Docker, then you will have to change to ‘True’ the DEBUG mode on <code class="docutils literal notranslate"><span class="pre">settings_prod.py</span></code>.</p>
 </div>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.docker.com/">Learn more about Docker</a></p></li>
@@ -548,7 +560,7 @@ configuration in <code class="docutils literal notranslate"><span class="pre">.e
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2024, Franco Gidaszewski
+                Copyright &#169; 2024-2024, Franco Gidaszewski
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -577,6 +589,7 @@ configuration in <code class="docutils literal notranslate"><span class="pre">.e
 <li><a class="reference internal" href="#">Quick Start</a><ul>
 <li><a class="reference internal" href="#usage">Usage</a><ul>
 <li><a class="reference internal" href="#create-a-new-module">Create a new Module</a></li>
+<li><a class="reference internal" href="#run-the-develop-environment-locally">Run the develop environment locally</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#including-api-configuration">Including API configuration</a></li>
@@ -596,7 +609,7 @@ configuration in <code class="docutils literal notranslate"><span class="pre">.e
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=d45e8c67"></script>
+</div><script src="_static/documentation_options.js?v=282f96c0"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
