@@ -269,8 +269,6 @@ STATIC_ROOT = BASE_DIR / "static"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-STATICFILES_DIRS = (BASE_DIR / "static",)
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -404,8 +402,6 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "static"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-
-STATICFILES_DIRS = (BASE_DIR / "static",)
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -558,8 +554,6 @@ STATIC_ROOT = BASE_DIR / "static"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-STATICFILES_DIRS = (BASE_DIR / "static",)
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -655,7 +649,7 @@ urlpatterns = [
 
     # Including a new module
     path("auth/", include("modules.authentication.urls")),
-    path("api/", include("modules.api.urls")),
+    # path("api/", include("modules.api.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 """
@@ -690,12 +684,12 @@ def hello_world(request):
 """
 
 urls_auth_content = """from django.urls import path
-from .views import hello_world
+from .views import login
 
 urlpatterns = [
     path(
         "users/login/",
-        hello_world,
+        login.hello_world,
         name="login",
     ),
 ]

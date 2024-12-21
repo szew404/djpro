@@ -17,7 +17,7 @@ from .base import *
 __copyright__ = "Copyright (c) 2024-2034, Franco Gidaszewski"
 """The copyright notice of the package."""
 
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 """The version of the package."""
 
 __license__ = "MIT"

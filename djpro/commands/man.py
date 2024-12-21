@@ -3,6 +3,8 @@ import subprocess
 from ..utils.logging import logging, log_with_color, Fore
 from .help import man_help
 
+import sys
+
 
 def man(command: str):
     if command == "help":
@@ -21,6 +23,14 @@ def man(command: str):
             "\nError while running the command.",
             Fore.RED,
         )
+
+    except KeyboardInterrupt:
+        log_with_color(
+            logging.WARNING,
+            "\nServer stopped: KeyboardInterrupt",
+            Fore.YELLOW,
+        )
+        exit(1)
 
 
 def run(args):
