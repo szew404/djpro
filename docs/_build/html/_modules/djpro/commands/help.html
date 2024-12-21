@@ -198,6 +198,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../explanation.html">Explanation</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a></li>
 </ul>
@@ -362,6 +365,18 @@
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
         <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;    -admin             Include admin.py file&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;    -apps              Include apps.py file&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="c1"># man</span>
     <span class="n">log_with_color</span><span class="p">(</span>
@@ -372,14 +387,36 @@
     <span class="p">)</span>
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
-        <span class="s2">&quot;  Usage:&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;  djpro man &lt;command&gt;&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">GREEN</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Examples of use:&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span>
         <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
-
     <span class="n">log_with_color</span><span class="p">(</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
-        <span class="s2">&quot;    djpro man &lt;command&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;    djpro man help     View list of available manage.py commands.&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;    djpro man runserver&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;    djpro man makemigrations&quot;</span><span class="p">,</span>
+        <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
+        <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">log_with_color</span><span class="p">(</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+        <span class="s2">&quot;    djpro man migrate</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span><span class="p">,</span>
         <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span></div>
@@ -504,7 +541,7 @@
       
     </aside>
   </div>
-</div><script src="../../../_static/documentation_options.js?v=282f96c0"></script>
+</div><script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>

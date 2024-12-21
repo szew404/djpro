@@ -199,6 +199,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
+<li class="toctree-l1"><a class="reference internal" href="explanation.html">Explanation</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 </ul>
@@ -289,18 +292,18 @@ to the general djpro project creation command:</p>
 <span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>wsgi.py
 <span class="w">    </span>├──<span class="w"> </span>modules/
 <span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
-<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>api/
-<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
-<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>models.py
-<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>serializers.py
-<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>urls.py
-<span class="w">    </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>views.py
 <span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>authentication/
 <span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>__init__.py
-<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>models.py
-<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>serializers.py
+<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>models/
+<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>└──<span class="w"> </span>auth_model.py
+<span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>serializers/
+<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+<span class="w">    </span>│<span class="w">       </span>│<span class="w">   </span>└──<span class="w"> </span>login_serializer.py
 <span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>urls.py
-<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>views.py
+<span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>views/
+<span class="w">    </span>│<span class="w">           </span>├──<span class="w"> </span>__init__.py
+<span class="w">    </span>│<span class="w">           </span>└──<span class="w"> </span>login.py
 <span class="w">    </span>├──<span class="w"> </span>static/
 <span class="w">    </span>├──<span class="w"> </span>tests/
 <span class="w">    </span>├──<span class="w"> </span>templates/
@@ -372,7 +375,7 @@ docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=282f96c0"></script>
+</div><script src="_static/documentation_options.js?v=1fd71caa"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>

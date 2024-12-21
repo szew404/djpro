@@ -42,18 +42,18 @@ to the general djpro project creation command:
         │   └── wsgi.py
         ├── modules/
         │   ├── __init__.py
-        │   ├── api/
-        │   │   ├── __init__.py
-        │   │   ├── models.py
-        │   │   ├── serializers.py
-        │   │   ├── urls.py
-        │   │   └── views.py
         │   └── authentication/
         │       ├── __init__.py
-        │       ├── models.py
-        │       ├── serializers.py
+        │       ├── models/
+        │       │   ├── __init__.py
+        │       │   └── auth_model.py
+        │       ├── serializers/
+        │       │   ├── __init__.py
+        │       │   └── login_serializer.py
         │       ├── urls.py
-        │       └── views.py
+        │       └── views/
+        │           ├── __init__.py
+        │           └── login.py
         ├── static/
         ├── tests/
         ├── templates/

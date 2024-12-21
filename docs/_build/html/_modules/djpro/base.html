@@ -198,6 +198,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../explanation.html">Explanation</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a></li>
 </ul>
@@ -278,7 +281,7 @@
     <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse and run user command&quot;&quot;&quot;</span>
         <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-        <span class="n">args</span><span class="o">.</span><span class="n">base_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;src&quot;</span><span class="p">)</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">base_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;src&quot;</span><span class="p">)</span>  <span class="c1"># sources folder</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span><span class="p">:</span>
             <span class="n">log_with_color</span><span class="p">(</span>
@@ -368,21 +371,21 @@
         <span class="p">},</span>
     <span class="p">)</span>
 
-    <span class="c1"># Add service (not implemented)</span>
-    <span class="n">cli</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span>
-        <span class="s2">&quot;service&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Add a new service to your current project.&quot;</span><span class="p">,</span>
-        <span class="n">arguments</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;--unfold&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Add Unfold configuration to your current project.&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;--docker&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Add Docker configuration to your current project.&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
-            <span class="p">},</span>
-        <span class="p">},</span>
-    <span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; # Add service (not implemented)</span>
+<span class="sd">    cli.add_command(</span>
+<span class="sd">        &quot;service&quot;,</span>
+<span class="sd">        &quot;Add a new service to your current project.&quot;,</span>
+<span class="sd">        arguments={</span>
+<span class="sd">            &quot;--unfold&quot;: {</span>
+<span class="sd">                &quot;help&quot;: &quot;Add Unfold configuration to your current project.&quot;,</span>
+<span class="sd">                &quot;action&quot;: &quot;store_true&quot;,</span>
+<span class="sd">            },</span>
+<span class="sd">            &quot;--docker&quot;: {</span>
+<span class="sd">                &quot;help&quot;: &quot;Add Docker configuration to your current project.&quot;,</span>
+<span class="sd">                &quot;action&quot;: &quot;store_true&quot;,</span>
+<span class="sd">            },</span>
+<span class="sd">        },</span>
+<span class="sd">    )&quot;&quot;&quot;</span>
 
     <span class="c1"># Module</span>
     <span class="n">cli</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span>
@@ -413,6 +416,14 @@
                 <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Include forms.py file.&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
             <span class="p">},</span>
+            <span class="s2">&quot;-admin&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Include admin.py file.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;-apps&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Include apps.py file.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
         <span class="p">},</span>
     <span class="p">)</span>
 
@@ -426,7 +437,7 @@
                 <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="p">},</span>
             <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Display information about manage.py commands.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;View list of available manage.py commands.&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
             <span class="p">},</span>
         <span class="p">},</span>
@@ -466,7 +477,7 @@
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=282f96c0"></script>
+</div><script src="../../_static/documentation_options.js?v=1fd71caa"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>

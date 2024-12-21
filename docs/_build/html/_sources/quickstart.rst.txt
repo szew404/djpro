@@ -43,10 +43,16 @@ Execute the following line of code inside the root folder of your project:
         │   ├── __init__.py
         │   └── authentication/
         │       ├── __init__.py
-        │       ├── models.py
-        │       ├── serializers.py
+        │       ├── models/
+        │       │   ├── __init__.py
+        │       │   └── auth_model.py
+        │       ├── serializers/
+        │       │   ├── __init__.py
+        │       │   └── login_serializer.py
         │       ├── urls.py
-        │       └── views.py
+        │       └── views/
+        │           ├── __init__.py
+        │           └── login.py
         ├── static/
         ├── tests/
         ├── templates/
@@ -100,9 +106,13 @@ You can also add the files you want to be created in your module:
             ├── __init__.py
             └── YOUR-MODULE/
                 ├── __init__.py
-                ├── models.py
+                ├── models/
+                │   ├── __init__.py
+                │   └── models.py
                 ├── urls.py
-                └── views.py
+                └── views/
+                    ├── __init__.py
+                    └── views.py
 
 See the list of available files:
 
@@ -113,6 +123,8 @@ See the list of available files:
    -serializers
    -urls
    -forms
+   -admin
+   -apps
 
 Run the develop environment locally
 -----------------------------------
@@ -124,7 +136,7 @@ Run the develop environment locally
 .. note::
 
    The ``man`` command was created to make it faster and easier to run the ``manage.py`` commands in Django.
-   `Find out more about its use <man>`_.
+   `Find out more about its use <man.html>`.
 
 ----
 
