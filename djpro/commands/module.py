@@ -30,9 +30,14 @@ def create_module(
             )
         )
 
-    new_module_dir = modules_dir / module_name
+    new_module_dir = [
+        modules_dir / module_name,
+        modules_dir / module_name / "models",
+        modules_dir / module_name / "views",
+        modules_dir / module_name / "serializers",
+    ]
 
-    if new_module_dir.exists():
+    if new_module_dir[0].exists():
         raise FileExistsError(
             log_with_color(
                 logging.INFO,
@@ -42,25 +47,30 @@ def create_module(
         )
 
     files = [
-        new_module_dir / "__init__.py",
+        new_module_dir[0] / "__init__.py",
+        new_module_dir[1] / "__init__.py",
+        new_module_dir[2] / "__init__.py",
+        new_module_dir[3] / "__init__.py",
     ]
 
     file_mapping = {
-        "models": "models.py",
-        "views": "views.py",
-        "serializers": "serializers.py",
-        "urls": "urls.py",
-        "forms": "forms.py",
+        "models": (new_module_dir[1], "models.py"),
+        "views": (new_module_dir[2], "views.py"),
+        "serializers": (new_module_dir[3], "serializers.py"),
+        "urls": (new_module_dir[0], "urls.py"),
+        "forms": (new_module_dir[0], "forms.py"),
+        "admin": (new_module_dir[0], "admin.py"),
+        "apps": (new_module_dir[0], "apps.py"),
     }
 
     if args:
         files.extend(
-            new_module_dir / filename
-            for key, filename in file_mapping.items()
+            directory / filename
+            for key, (directory, filename) in file_mapping.items()
             if getattr(args, key, False)
         )
 
-    create_dirs([new_module_dir])
+    create_dirs(new_module_dir)
     create_files(files)
 
 
@@ -74,5 +84,13 @@ def run(args):
             args=args,
         )
 
-    except Exception:
-        return
+    except Exception as e:
+        error_message = "\nError while creating module"
+        if f"{e}" != "None":
+            error_message += f": {e}"
+
+        log_with_color(
+            logging.INFO,
+            error_message,
+            Fore.RED,
+        )

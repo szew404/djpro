@@ -107,6 +107,18 @@ def help():
         Fore.BLUE,
         delay=0,
     )
+    log_with_color(
+        logging.INFO,
+        "    -admin             Include admin.py file",
+        Fore.BLUE,
+        delay=0,
+    )
+    log_with_color(
+        logging.INFO,
+        "    -apps              Include apps.py file",
+        Fore.BLUE,
+        delay=0,
+    )
 
     # man
     log_with_color(

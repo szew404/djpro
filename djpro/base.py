@@ -21,7 +21,7 @@ class BaseCommand:
     def execute(self):
         """Parse and run user command"""
         args = self.parser.parse_args()
-        args.base_dir = os.path.join(os.getcwd(), "src")
+        args.base_dir = os.path.join(os.getcwd(), "src")  # sources folder
 
         if not args.command:
             log_with_color(
@@ -104,7 +104,7 @@ def main():
         },
     )
 
-    # Add service (not implemented)
+    """ # Add service (not implemented)
     cli.add_command(
         "service",
         "Add a new service to your current project.",
@@ -118,7 +118,7 @@ def main():
                 "action": "store_true",
             },
         },
-    )
+    )"""
 
     # Module
     cli.add_command(
@@ -147,6 +147,14 @@ def main():
             },
             "-forms": {
                 "help": "Include forms.py file.",
+                "action": "store_true",
+            },
+            "-admin": {
+                "help": "Include admin.py file.",
+                "action": "store_true",
+            },
+            "-apps": {
+                "help": "Include apps.py file.",
                 "action": "store_true",
             },
         },

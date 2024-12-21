@@ -49,6 +49,15 @@ def create_project(
 
     base_dir_path = Path(base_dir)
 
+    if base_dir_path.exists():
+        raise FileExistsError(
+            log_with_color(
+                logging.INFO,
+                "\nError: a project already exists in the current path.",
+                Fore.YELLOW,
+            )
+        )
+
     # Directories
     directories = [
         base_dir_path / "bin",
@@ -56,6 +65,9 @@ def create_project(
         base_dir_path / "static",
         base_dir_path / "modules",
         base_dir_path / "modules" / "authentication",
+        base_dir_path / "modules" / "authentication" / "models",
+        base_dir_path / "modules" / "authentication" / "views",
+        base_dir_path / "modules" / "authentication" / "serializers",
         base_dir_path / "utils",
         base_dir_path / "tests",
         base_dir_path / "templates",
@@ -76,9 +88,16 @@ def create_project(
         base_dir_path / "config" / ".env.conf",
         base_dir_path / "modules" / "__init__.py",
         base_dir_path / "modules" / "authentication" / "__init__.py",
-        base_dir_path / "modules" / "authentication" / "serializers.py",
-        base_dir_path / "modules" / "authentication" / "models.py",
-        base_dir_path / "modules" / "authentication" / "views.py",
+        base_dir_path / "modules" / "authentication" / "serializers" / "__init__.py",
+        base_dir_path
+        / "modules"
+        / "authentication"
+        / "serializers"
+        / "login_serializer.py",
+        base_dir_path / "modules" / "authentication" / "models" / "__init__.py",
+        base_dir_path / "modules" / "authentication" / "models" / "auth_model.py",
+        base_dir_path / "modules" / "authentication" / "views" / "__init__.py",
+        base_dir_path / "modules" / "authentication" / "views" / "login.py",
         base_dir_path / "modules" / "authentication" / "urls.py",
         base_dir_path / "utils" / "__init__.py",
         base_dir_path / "tests" / "__init__.py",
@@ -114,14 +133,23 @@ def create_project(
             delay=1,
         )
 
-        api_dir = base_dir_path / "modules" / "api"
-        directories.append(api_dir)
+        api_dir = [
+            base_dir_path / "modules" / "api",
+            base_dir_path / "modules" / "api" / "models",
+            base_dir_path / "modules" / "api" / "views",
+            base_dir_path / "modules" / "api" / "serializers",
+        ]
+        for dir in api_dir:
+            directories.append(dir)  # Include API dirs
 
         api_files = [
             base_dir_path / "modules" / "api" / "__init__.py",
-            base_dir_path / "modules" / "api" / "serializers.py",
-            base_dir_path / "modules" / "api" / "models.py",
-            base_dir_path / "modules" / "api" / "views.py",
+            base_dir_path / "modules" / "api" / "serializers" / "__init__.py",
+            base_dir_path / "modules" / "api" / "serializers" / "get_product.py",
+            base_dir_path / "modules" / "api" / "models" / "__init__.py",
+            base_dir_path / "modules" / "api" / "models" / "product_model.py",
+            base_dir_path / "modules" / "api" / "views" / "__init__.py",
+            base_dir_path / "modules" / "api" / "views" / "get_product.py",
             base_dir_path / "modules" / "api" / "urls.py",
         ]
         for file in api_files:
@@ -165,7 +193,7 @@ def write(
         (config_dir / "asgi.py", asgi_content.format(project_name=project_name)),
         (config_dir / "urls.py", urls_content.format(project_name=project_name)),
         (bin_dir / "manage.py", manage_content),
-        (auth_module_dir / "views.py", views_auth_content),
+        (auth_module_dir / "views" / "login.py", views_auth_content),
         (auth_module_dir / "urls.py", urls_auth_content),
         (Path("requirements.txt"), requirements_content),
         (Path(".gitignore"), gitignore_content),
@@ -237,8 +265,12 @@ def run(args):
             run_dev.run_dev_messages()
 
     except Exception as e:
+        error_message = "\nError while creating project"
+        if f"{e}" != "None":
+            error_message += f": {e}"
+
         log_with_color(
             logging.INFO,
-            f"\nError while creating project: {e}",
+            error_message,
             Fore.RED,
         )

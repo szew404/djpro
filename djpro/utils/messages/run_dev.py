@@ -18,8 +18,8 @@ def run_dev_messages():
 
     commands = [
         "pip install -r requirements.txt",
-        "python bin/manage.py collectstatic",
-        "python bin/manage.py runserver\n",
+        "djpro man collectstatic",
+        "djpro man runserver\n",
     ]
 
     for command in commands:
