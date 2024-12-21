@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>djpro.commands.project - djpro 0.0.1 documentation</title>
+        <title>djpro.commands.project - djpro</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
@@ -165,7 +165,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../../../index.html"><div class="brand">djpro 0.0.1 documentation</div></a>
+      <a href="../../../index.html"><div class="brand">djpro</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
   
   
-  <span class="sidebar-brand-text">djpro 0.0.1 documentation</span>
+  <span class="sidebar-brand-text">djpro</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -198,6 +198,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../explanation.html">Explanation</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a></li>
 </ul>
@@ -304,6 +307,15 @@
 
     <span class="n">base_dir_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">base_dir</span><span class="p">)</span>
 
+    <span class="k">if</span> <span class="n">base_dir_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">FileExistsError</span><span class="p">(</span>
+            <span class="n">log_with_color</span><span class="p">(</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error: a project already exists in the current path.&quot;</span><span class="p">,</span>
+                <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
     <span class="c1"># Directories</span>
     <span class="n">directories</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span>
@@ -311,6 +323,9 @@
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;static&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span><span class="p">,</span>
+        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;models&quot;</span><span class="p">,</span>
+        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;views&quot;</span><span class="p">,</span>
+        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;serializers&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;utils&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;tests&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;templates&quot;</span><span class="p">,</span>
@@ -331,9 +346,16 @@
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;config&quot;</span> <span class="o">/</span> <span class="s2">&quot;.env.conf&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
-        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;serializers.py&quot;</span><span class="p">,</span>
-        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;models.py&quot;</span><span class="p">,</span>
-        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;views.py&quot;</span><span class="p">,</span>
+        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;serializers&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
+        <span class="n">base_dir_path</span>
+        <span class="o">/</span> <span class="s2">&quot;modules&quot;</span>
+        <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span>
+        <span class="o">/</span> <span class="s2">&quot;serializers&quot;</span>
+        <span class="o">/</span> <span class="s2">&quot;login_serializer.py&quot;</span><span class="p">,</span>
+        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;models&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
+        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;models&quot;</span> <span class="o">/</span> <span class="s2">&quot;auth_model.py&quot;</span><span class="p">,</span>
+        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;views&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
+        <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;views&quot;</span> <span class="o">/</span> <span class="s2">&quot;login.py&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;authentication&quot;</span> <span class="o">/</span> <span class="s2">&quot;urls.py&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;utils&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
         <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;tests&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
@@ -369,14 +391,23 @@
             <span class="n">delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">api_dir</span> <span class="o">=</span> <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span>
-        <span class="n">directories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">api_dir</span><span class="p">)</span>
+        <span class="n">api_dir</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span><span class="p">,</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;models&quot;</span><span class="p">,</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;views&quot;</span><span class="p">,</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;serializers&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="nb">dir</span> <span class="ow">in</span> <span class="n">api_dir</span><span class="p">:</span>
+            <span class="n">directories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dir</span><span class="p">)</span>  <span class="c1"># Include API dirs</span>
 
         <span class="n">api_files</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
-            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;serializers.py&quot;</span><span class="p">,</span>
-            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;models.py&quot;</span><span class="p">,</span>
-            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;views.py&quot;</span><span class="p">,</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;serializers&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;serializers&quot;</span> <span class="o">/</span> <span class="s2">&quot;get_product.py&quot;</span><span class="p">,</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;models&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;models&quot;</span> <span class="o">/</span> <span class="s2">&quot;product_model.py&quot;</span><span class="p">,</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;views&quot;</span> <span class="o">/</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">,</span>
+            <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;views&quot;</span> <span class="o">/</span> <span class="s2">&quot;get_product.py&quot;</span><span class="p">,</span>
             <span class="n">base_dir_path</span> <span class="o">/</span> <span class="s2">&quot;modules&quot;</span> <span class="o">/</span> <span class="s2">&quot;api&quot;</span> <span class="o">/</span> <span class="s2">&quot;urls.py&quot;</span><span class="p">,</span>
         <span class="p">]</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">api_files</span><span class="p">:</span>
@@ -423,7 +454,7 @@
         <span class="p">(</span><span class="n">config_dir</span> <span class="o">/</span> <span class="s2">&quot;asgi.py&quot;</span><span class="p">,</span> <span class="n">asgi_content</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_name</span><span class="o">=</span><span class="n">project_name</span><span class="p">)),</span>
         <span class="p">(</span><span class="n">config_dir</span> <span class="o">/</span> <span class="s2">&quot;urls.py&quot;</span><span class="p">,</span> <span class="n">urls_content</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_name</span><span class="o">=</span><span class="n">project_name</span><span class="p">)),</span>
         <span class="p">(</span><span class="n">bin_dir</span> <span class="o">/</span> <span class="s2">&quot;manage.py&quot;</span><span class="p">,</span> <span class="n">manage_content</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">auth_module_dir</span> <span class="o">/</span> <span class="s2">&quot;views.py&quot;</span><span class="p">,</span> <span class="n">views_auth_content</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">auth_module_dir</span> <span class="o">/</span> <span class="s2">&quot;views&quot;</span> <span class="o">/</span> <span class="s2">&quot;login.py&quot;</span><span class="p">,</span> <span class="n">views_auth_content</span><span class="p">),</span>
         <span class="p">(</span><span class="n">auth_module_dir</span> <span class="o">/</span> <span class="s2">&quot;urls.py&quot;</span><span class="p">,</span> <span class="n">urls_auth_content</span><span class="p">),</span>
         <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;requirements.txt&quot;</span><span class="p">),</span> <span class="n">requirements_content</span><span class="p">),</span>
         <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;.gitignore&quot;</span><span class="p">),</span> <span class="n">gitignore_content</span><span class="p">),</span>
@@ -498,9 +529,13 @@
             <span class="n">run_dev</span><span class="o">.</span><span class="n">run_dev_messages</span><span class="p">()</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error while creating project&quot;</span>
+        <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">!=</span> <span class="s2">&quot;None&quot;</span><span class="p">:</span>
+            <span class="n">error_message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+
         <span class="n">log_with_color</span><span class="p">(</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error while creating project: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">error_message</span><span class="p">,</span>
             <span class="n">Fore</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span>
         <span class="p">)</span></div>
 
@@ -516,7 +551,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2024, Franco Gidaszewski
+                Copyright &#169; 2024-2024, Franco Gidaszewski
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -536,7 +571,7 @@
       
     </aside>
   </div>
-</div><script src="../../../_static/documentation_options.js?v=d45e8c67"></script>
+</div><script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>

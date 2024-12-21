@@ -40,16 +40,28 @@ to the general djpro project creation command:
         │   ├── __init__.py
         │   ├── api/
         │   │   ├── __init__.py
-        │   │   ├── models.py
-        │   │   ├── serializers.py
+        │   │   ├── models/
+        │   │   │   ├── __init__.py
+        │   │   │   └── product_model.py 
+        │   │   ├── serializers/
+        │   │   │   ├── __init__.py
+        │   │   │   └── get_product.py
         │   │   ├── urls.py
-        │   │   └── views.py
+        │   │   └── views/
+        │   │       ├── __init__.py
+        │   │       └── get_product.py
         │   └── authentication/
         │       ├── __init__.py
-        │       ├── models.py
-        │       ├── serializers.py
+        │       ├── models/
+        │       │   ├── __init__.py
+        │       │   └── auth_model.py
+        │       ├── serializers/
+        │       │   ├── __init__.py
+        │       │   └── login_serializer.py
         │       ├── urls.py
-        │       └── views.py
+        │       └── views/
+        │           ├── __init__.py
+        │           └── login.py
         ├── static/
         ├── tests/
         ├── templates/

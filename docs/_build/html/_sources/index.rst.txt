@@ -20,6 +20,17 @@ Overview
 Full Table of Contents
 ======================
 
+Why use djpro?
+--------------
+Django’s Command Line Interface (CLI) is a powerful tool for generating well-structured Django projects.
+However, maintaining that clean structure can become challenging as we create multiple
+apps, models, views, and routes.
+
+.. toctree::
+   :maxdepth: 2
+
+   explanation
+
 The User Guide
 --------------
 
