@@ -2,6 +2,7 @@
 
     <div align="center">
         <h1>djpro</h1>
+        [![PyPI Downloads](https://static.pepy.tech/badge/djpro)](https://pepy.tech/projects/djpro)
         <a href="https://pypi.python.org/pypi/djpro"><img src="https://img.shields.io/pypi/v/djpro.svg" alt="PyPI"></a>
         <a href="https://github.com/szew404/djpro"><img src="https://img.shields.io/pypi/pyversions/djpro.svg" alt="versions"></a>
         <a href="https://github.com/szew404/djpro/blob/main/LICENSE"><img src="https://img.shields.io/github/license/szew404/djpro.svg?v" alt="license"></a>
